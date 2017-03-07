@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:47:41 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/04 19:55:49 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/07 18:38:58 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,9 @@
 
 int main(int argc, char **argv)
 {
+	t_pos pos;
+
+	ft_memset(&pos, 0, sizeof(t_pos));
+
 	return (0);
 }
