@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/04 19:56:00 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/04 20:00:30 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,5 @@
 # include <errno.h>
 # include <stdio.h>
 # include "../libft/libft.h"
-
-
 
 #endif
