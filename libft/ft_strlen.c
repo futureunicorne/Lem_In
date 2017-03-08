@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hel-hadi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:03:57 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/02/01 10:42:18 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2016/11/06 15:15:13 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ size_t	ft_strlen(const char *s)
 	size_t i;
 
 	i = 0;
-	if (s == NULL)
-		return (0);
 	while (s[i])
 		i++;
 	return (i);

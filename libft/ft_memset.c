@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 16:05:10 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/01/13 10:59:36 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2016/11/18 10:45:39 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	size_t	i;
 
 	i = 0;
-	if (c >= 0 && c <= 127)
+	if (c >= 0 || c <= 127)
 	{
 		s1 = (char*)s;
 		while (i < n)

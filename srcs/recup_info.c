@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   recup_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/06 14:38:44 by hel-hadi          #+#    #+#             */
-/*   Updated: 2016/11/15 11:24:26 by hel-hadi         ###   ########.fr       */
+/*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
+/*   Updated: 2017/03/08 08:07:27 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/lem_in.h"
 
-void	ft_putstr(char const *s)
+int		ft_recup_info(t_pos *pos)
 {
-	if (s)
-		write(1, s, ft_strlen(s));
+	get_next_line(pos->fd, &pos->line);
+	pos->nb_ant = ft_atoi(pos->line);
+	printf("res %d\n", pos->nb_ant);
+	free(pos->line);
+	return (0);
 }

@@ -6,47 +6,46 @@
 #    By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/07 18:38:35 by hel-hadi          #+#    #+#              #
-#    Updated: 2017/03/07 18:38:55 by hel-hadi         ###   ########.fr        #
+#    Updated: 2017/03/08 08:05:20 by hel-hadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ljoly.filler
-SRCS = main.c filler.c tactics.c check_and_set.c
+NAME = lem-in
+SRCS =	main.c				\
+		recup_info.c		\
+
+CC = gcc
 FLAGS = -Wall -Werror -Wextra
-LIBFT = -C ./libft/
 HEADER = -I/includes
 OBJ = $(addprefix $(OBJ_PATH), $(SRCS:.c=.o))
-OBJ_PATH = ./obj/
+OBJ_PATH = ./objets/
 SRCS_PATH = ./srcs/
 
-RED=\033[1;31m
-GREEN=\033[1;32m
-NC=\033[0m
-
-.SILENT:
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make $(LIBFT)
-	@gcc $(FLAGS) -o $(NAME) $(OBJ) -L./libft -lft
-	@echo "$(GREEN)[✓]$(NC) Executable $(NAME) ready!"
+	make -C libft fclean && make -C libft
+	$(CC) $(FLAGS) -o $(NAME) $(OBJ) -L./libft -lft
+	@echo "\033[36m === Creation de l'executable Lem-in ===\033[0m"
 
 $(OBJ_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
 	@gcc $(FLAGS) -I./libft $(HEADER) -o $@ -c $<
-	@echo "$(GREEN)[✓]$(NC) Compiling objects..."
+	@echo "\033[32m === Modification de fichier -- Recompilation ===\033[0m"
 
 clean:
-	@make $(LIBFT) clean
-	@rm -rf $(OBJ_PATH)
-	@echo "$(RED)[-]$(NC) Objects cleaned..."
+	@make clean -C libft/
+	@rm -rf objets
+	@rm -rf *.o
+	@echo "\033[34m === Suppression des fichiers objets===\033[0m"
 
 fclean: clean
-	@rm -f libft/libft.a
+	@make fclean -C libft/
 	@rm -f $(NAME)
-	@echo "$(RED)[-]$(NC) Executable $(NAME) cleaned..."
+	@echo "\033[34m === Suppression du fichier executable===\033[0m"
 
 re: fclean all
+	@echo "\033[35m === Renouvellement executable ====\033[0m"
 
 .PHONY: $(NAME) all clean fclean re
