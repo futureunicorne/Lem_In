@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/11 19:30:14 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/12 11:25:37 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_ref
 	int			res;
 }				t_ref;
 
-int				ft_recup_info(t_pos *pos);
-
+int				ft_recup_info(t_pos *pos, t_last *lst);
+int				ft_parse_info(t_last *lst);
+void 			ft_print(t_last *list);
 #endif

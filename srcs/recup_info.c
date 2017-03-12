@@ -6,25 +6,12 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/12 07:05:56 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/12 13:20:12 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static void 	ft_print(t_last *list)
-{
-	t_list *elem;
-
-	elem = list->debut;
-	while (elem != NULL)
-	{
-		printf("content = %s\n", elem->content);
-		printf("strlen  = %zu\n", ft_strlen(elem->content));
-		printf("taille  = %zu\n", list->taille);
-		elem = elem->next;
-	}
-}
 int		ft_check_nb_ant(char *str)
 {
 	int i;
@@ -88,7 +75,7 @@ int		ft_check_rule(char *line)
 		if (ft_atoi(line + ref.j) >= 0)
 			ref.flag++;
 		if (line[ref.i] != ' ')
-			break;
+			break ;
 		ref.auth++;
 		ref.flag = 1;
 		ref.i++;
@@ -129,12 +116,8 @@ int		ft_record_general(char *line)
 	return (0);
 }
 
-int	ft_recup_info(t_pos *pos)
+int		ft_recup_info(t_pos *pos, t_last *lst)
 {
-	t_last lst;
-	t_list *elem;
-
-	ft_init_lst(&lst);
 	get_next_line(pos->fd, &pos->line);
 	if (ft_check_nb_ant(pos->line) < 0 || ft_check_nb_ant(pos->line) == 0
 	|| ft_check_nb_ant(pos->line) > 2147483647)
@@ -144,31 +127,24 @@ int	ft_recup_info(t_pos *pos)
 		return (0);
 	}
 	else
-	{
-		ft_add_elm_bis(&lst, (char*)pos->line, ft_strlen(pos->line));
-		elem = lst.debut;
-		printf("res = = %s\n", elem->content);
-	}
+		ft_add_elm_bis(lst, (char*)pos->line, ft_strlen(pos->line));
 	free(pos->line);
 	while (pos->line)
 	{
 		get_next_line(pos->fd, &pos->line);
 		if (pos->line[0] == '\0')
 		{
-			free (pos->line);
-			break;
+			free(pos->line);
+			break ;
 		}
 		if (ft_record_general(pos->line) == 0)
 		{
-			free (pos->line);
+			free(pos->line);
 			ft_putstr_fd("ERROR\n", 1);
 			return (0);
 		}
-		ft_add_elm_bis(&lst, (char*)pos->line, ft_strlen(pos->line));
+		ft_add_elm_bis(lst, (char*)pos->line, ft_strlen(pos->line));
 		free(pos->line);
 	}
-	ft_print(&lst);
-	return (0);
+	return (1);
 }
-
-

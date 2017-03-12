@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_lst.c                                      :+:      :+:    :+:   */
+/*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/21 16:15:49 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/12 09:09:50 by hel-hadi         ###   ########.fr       */
+/*   Created: 2017/03/12 10:56:42 by hel-hadi          #+#    #+#             */
+/*   Updated: 2017/03/12 10:57:55 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_lst(t_last *list)
+void 	ft_print(t_last *list)
 {
 	t_list *elem;
-	t_list *tmp;
 
 	elem = list->debut;
 	while (elem != NULL)
 	{
-		tmp = elem->next;
-		free(elem->content);
-		free(elem);
-		elem = tmp;
+		printf("content = %s\n", elem->content);
+		printf("strlen  = %zu\n", ft_strlen(elem->content));
+		printf("taille  = %zu\n", list->taille);
+		elem = elem->next;
 	}
 }
