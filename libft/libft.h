@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:24:11 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/03 09:00:34 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/11 19:39:35 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_init_lst(t_last *list);
 int					ft_add_elm(t_last *list, void *content, size_t taille, int
 					rep);
+int					ft_add_elm_bis(t_last *list, void *content,
+					size_t content_size);
 void				ft_print_lst(t_last *list);
 void				ft_free_lst(t_last *list);
 void				ft_del_elem(t_last *list, t_list *elem);

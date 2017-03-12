@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/08 08:02:29 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/11 19:30:14 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ typedef struct	s_pos
 	int			fd;
 	char		*line;
 }				t_pos;
+
+typedef struct	s_ref
+{
+	int			auth;
+	int			flag;
+	int			i;
+	int			j;
+	int			res;
+}				t_ref;
 
 int				ft_recup_info(t_pos *pos);
 

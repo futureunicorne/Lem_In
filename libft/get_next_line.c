@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 15:38:37 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/03 10:06:21 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/10 16:40:52 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,16 @@ int		get_next_line(int fd, char **line)
 	}
 	create_line(line, elem);
 	if (!ret && !**line && !elem->content[0])
+	{
+		//free(elem->content);
+		//free(elem);
 		return (0);
+	}
 	else
+	{
+		//free(elem->content);
+		//free(elem);
 		return (1);
+	}
 	//return ((!ret && !**line && !elem->content[0]) ? 0 : 1);
 }
