@@ -6,7 +6,7 @@
 #    By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/06 09:17:24 by hel-hadi          #+#    #+#              #
-#    Updated: 2017/03/12 10:58:53 by hel-hadi         ###   ########.fr        #
+#    Updated: 2017/03/13 20:28:14 by hel-hadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ SRCS = 	ft_add_elem.c	\
 		ft_strcpy.c			\
 		ft_strdel.c			\
 		ft_strdup.c			\
+		ft_strndup.c		\
 		ft_strequ.c			\
 		ft_striter.c		\
 		ft_striteri.c		\
