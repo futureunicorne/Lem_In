@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:52:44 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/13 20:58:36 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/14 18:03:37 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		ft_check_space(char *str)
 		return (1);
 	return (0);
 }
+
 
 int		ft_start_bef(t_last *lst)
 {
@@ -123,6 +124,27 @@ int		ft_free_tab(char **tab, int j)
 	return (0);
 }
 
+int		ft_compare_salle(char **tab, int j)
+{
+	int i;
+	int k;
+
+	i = 0;
+	k = 0;
+	while (i < j)
+	{
+		k = i + 1;
+		while(k < j)
+		{
+			if (ft_strcmp(tab[i], tab[k]) == 0)
+				return (0);
+			k++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int		ft_check_salle(t_last *lst)
 {
 	t_list	*elem;
@@ -149,18 +171,15 @@ int		ft_check_salle(t_last *lst)
 			tab[j] = dup;
 			j++;
 		}
-
 		elem = elem->prev;
 	}
-	i = 0;
-	while (i < j)
+	if (ft_compare_salle(tab, j) == 1)
 	{
-		printf("%s\n", tab[i]);
-		i++;
+		ft_free_tab(tab, j);
+		free (tab);
+		return (1);
 	}
-	ft_free_tab(tab, j);
-	free (tab);
-	return (1);
+	return (0);
 }
 
 int		ft_check_dbl(t_last *lst)
@@ -188,6 +207,49 @@ int		ft_check_dbl(t_last *lst)
 	}
 	free(tab);
 	return (0);
+}
+
+int		ft_check_dbl_enter(t_last *lst)
+{
+	t_list	*elem;
+	int		flag;
+	int		auth;
+
+	elem = lst->fin;
+	flag = 0;
+	auth = 0;
+	while (elem != NULL)
+	{
+		if (ft_strcmp(elem->content, "##start") == 0)
+			flag++;
+		if (ft_strcmp(elem->content, "##end") == 0)
+		 	auth++;
+		elem = elem->prev;
+	}
+	if (flag == 1 && auth == 1)
+		return (1);
+	return (0);
+}
+int		ft_after_link(t_last *lst)
+{
+	t_list *elem;
+
+	elem = lst->fin;
+	while (elem != NULL)
+	{
+		if (ft_check_link(elem->content) == 1)
+		{
+			printf("%s\n",elem->content);
+			if (elem->prev != NULL)
+			{
+				printf("oui\n");
+				if (ft_check_space(elem->prev->content))
+					return (0);
+			}
+		}
+		elem = elem->prev;
+	}
+	return (1);
 }
 
 int		ft_check_order(t_last *lst)
@@ -220,12 +282,12 @@ int		ft_check_order(t_last *lst)
 
 int		ft_parse_info(t_last *lst)
 {
-	if (ft_check_order(lst) == 0 || ft_check_dbl(lst) == 0)
+	if (ft_check_order(lst) == 0 || ft_check_dbl(lst) == 0 || ft_check_dbl_enter(lst) == 0)
 	{
 		ft_putstr_fd("ERROR PARSE", 1);
 		return (0);
 	}
-	if (ft_check_salle(lst) == 0 )//|| ft_check_link(lst) == 0)
+	if (ft_check_salle(lst) == 0 || ft_after_link(lst) == 0)
 	{
 		ft_putstr_fd("ERROR PARSE 2", 1);
 		return (0);
