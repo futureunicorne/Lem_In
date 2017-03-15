@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 16:14:12 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/12 10:13:45 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/15 18:29:16 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ int				ft_add_elm_bis(t_last *list, void *content, size_t content_size)
 		list->fin = elem;
 	list->debut = elem;
 	list->taille++;
+	elem->indice = list->taille;
+	elem->ant = 0;
 	return (0);
 }

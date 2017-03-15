@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:24:11 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/15 09:40:44 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/15 18:20:03 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ typedef struct		s_list
 {
 	char			*content;
 	int				repere;
+	int				indice;
+	int				ant;
 	size_t			content_size;
 	struct s_list	*prev;
 	struct s_list	*next;

@@ -6,7 +6,7 @@
 #    By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/07 18:38:35 by hel-hadi          #+#    #+#              #
-#    Updated: 2017/03/15 09:30:47 by hel-hadi         ###   ########.fr        #
+#    Updated: 2017/03/15 16:09:35 by hel-hadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS =	main.c				\
 		parse_info.c		\
 		tools_parser.c		\
 		tools_parser2.c		\
-
+		sort_list.c			\
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra

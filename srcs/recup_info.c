@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/12 13:20:12 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/15 14:24:01 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,18 @@ int		ft_check_link(char *line)
 	while (line[ref.i])
 	{
 		ref.j = ref.i;
-		while (line[ref.i] >= 48 && line[ref.i] <= 57)
+		while ((line[ref.i] >= 48 && line[ref.i] <= 57)
+		|| (line[ref.i] >= 65 && line[ref.i] <= 90)
+		|| (line[ref.i] >= 97 && line[ref.i] <= 122))
+		{
+			if (ref.flag == ref.res)
+				ref.flag++;
 			ref.i++;
-		if (ft_atoi(line + ref.j) >= 0)
-			ref.flag++;
+		}
 		if (line[ref.i] == '-')
 			ref.auth++;
+
+		ref.res = ref.flag;
 		ref.i++;
 	}
 	if (ref.auth == 1 && ref.flag == 2)
@@ -138,13 +144,12 @@ int		ft_recup_info(t_pos *pos, t_last *lst)
 			break ;
 		}
 		if (ft_record_general(pos->line) == 0)
-		{
 			free(pos->line);
-			ft_putstr_fd("ERROR\n", 1);
-			return (0);
+		else
+		{
+			ft_add_elm_bis(lst, (char*)pos->line, ft_strlen(pos->line));
+			free(pos->line);
 		}
-		ft_add_elm_bis(lst, (char*)pos->line, ft_strlen(pos->line));
-		free(pos->line);
 	}
 	return (1);
 }

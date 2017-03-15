@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/15 09:39:04 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/15 18:07:34 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct	s_ref
 	int			i;
 	int			j;
 	int			res;
+	char		*dup;
+	char		*dup2;
 }				t_ref;
 
 int				ft_recup_info(t_pos *pos, t_last *lst);
@@ -58,5 +60,7 @@ int				ft_parse_info(t_last *lst);
 int				ft_check_nb_ant(char *str);
 int				ft_check_rule(char *line);
 int				ft_record_general(char *line);
+int				ft_sort_list(t_last *lst, t_last *dup);
+
 
 #endif

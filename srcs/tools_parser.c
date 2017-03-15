@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:55:01 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/15 09:33:08 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/15 14:37:19 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,32 @@ int		ft_false_link(char *line)
 	t_ref ref;
 
 	ft_memset(&ref, 0, sizeof(t_ref));
-	ref.res = -1;
 	while (line[ref.i])
 	{
 		ref.j = ref.i;
-		while (line[ref.i] >= 48 && line[ref.i] <= 57)
-			ref.i++;
-		if (ft_atoi(line + ref.j) >= 0)
+		while ((line[ref.i] >= 48 && line[ref.i] <= 57)
+		|| (line[ref.i] >= 65 && line[ref.i] <= 90)
+		|| (line[ref.i] >= 97 && line[ref.i] <= 122))
 		{
-			if (ref.res == ft_atoi(line + ref.j))
-				return (0);
-			if (ref.res < 0)
-				ref.res = ft_atoi(line + ref.j);
+			ref.i++;
 		}
+		if (!ref.dup)
+			ref.dup = ft_strsub(line, ref.j, ref.i);
+		else
+			ref.dup2 = ft_strsub(line, ref.j, ref.i);
+		if (line[ref.i] == '-')
+			ref.auth++;
+		ref.res = ref.flag;
 		ref.i++;
 	}
+	if (ft_strcmp(ref.dup, ref.dup2) == 0)
+	{
+		free(ref.dup);
+		free(ref.dup2);
+		return (0);
+	}
+	free(ref.dup);
+	free(ref.dup2);
 	return (1);
 }
 
