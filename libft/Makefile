@@ -6,7 +6,7 @@
 #    By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/06 09:17:24 by hel-hadi          #+#    #+#              #
-#    Updated: 2017/03/13 20:28:14 by hel-hadi         ###   ########.fr        #
+#    Updated: 2017/03/15 09:40:59 by hel-hadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ SRCS = 	ft_add_elem.c	\
 		ft_tolower.c		\
 		ft_toupper.c		\
 		get_next_line.c		\
+		ft_free_tab.c		\
 
 OBJ = $(SRC:.c=.o)
 OBJ1 = objets/*.o

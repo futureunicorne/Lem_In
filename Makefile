@@ -6,7 +6,7 @@
 #    By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/07 18:38:35 by hel-hadi          #+#    #+#              #
-#    Updated: 2017/03/12 11:19:46 by hel-hadi         ###   ########.fr        #
+#    Updated: 2017/03/15 09:30:47 by hel-hadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ NAME = lem-in
 SRCS =	main.c				\
 		recup_info.c		\
 		parse_info.c		\
+		tools_parser.c		\
+		tools_parser2.c		\
 
 
 CC = gcc
