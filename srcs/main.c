@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:47:41 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/16 08:06:18 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/16 16:33:33 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ int main(void)
 	ft_sort_list(&lst, &dup);
 	ft_print(&dup);
 	ft_free_lst(&lst);
-	//ft_solve_lem(&pos);
+	ft_solve_ant(&dup);
 	return (0);
 }

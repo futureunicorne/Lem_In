@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:56:42 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/15 18:30:28 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/16 16:25:47 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,22 @@
 void 	ft_print(t_last *list)
 {
 	t_list *elem;
+	int i;
 
 	elem = list->fin;
 	while (elem != NULL)
 	{
-		printf("content = %s	|", elem->content);
-		printf("elem->indice = %d	|\n", elem->indice);
-		printf("ant = %d\n", elem->ant);
+		i = 0;
+		printf("content = %s |", elem->content);
+		printf("nom de salle %s |", elem->name );
+		printf("elem->indice = %d |", elem->indice);
+		printf("ant = %d |", elem->ant);
+		printf("elem->nb_link = %d\n", elem->nb_link);
+		while (elem->link[i])
+		{
+			printf("lien = %s\n", elem->link[i]);
+			i++;
+		}
 		elem = elem->prev;
 	}
 }
