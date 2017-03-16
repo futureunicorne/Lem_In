@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:24:11 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/15 18:20:03 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/16 08:21:48 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,13 @@ char				*ft_strndup(char *s, int size);
 typedef struct		s_list
 {
 	char			*content;
+	char			*name;
+	char			**link;
+	int				nb_link;
 	int				repere;
 	int				indice;
 	int				ant;
+
 	size_t			content_size;
 	struct s_list	*prev;
 	struct s_list	*next;
