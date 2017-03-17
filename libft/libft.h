@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:24:11 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/16 19:07:41 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/17 17:57:25 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,12 @@ typedef struct		s_list
 	char			**link;
 	int				nb_link;
 	int				repere;
+	int				passe;
+	int				parent;
 	int				indice;
 	int				ant;
-
+	int				start;
+	int				end;
 	size_t			content_size;
 	struct s_list	*prev;
 	struct s_list	*next;
@@ -120,6 +123,7 @@ int					ft_add_elm_bis(t_last *list, void *content,
 					size_t content_size);
 void				ft_print_lst(t_last *list);
 void				ft_print(t_last *list);
+void 				ft_print_begin(t_last *list);
 void				ft_free_lst(t_last *list);
 void				ft_del_elem(t_last *list, t_list *elem);
 t_list				*ft_get_elem(t_last *list, size_t content_size);

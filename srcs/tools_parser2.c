@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 09:28:48 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/15 09:41:12 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/17 15:38:50 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		ft_check_space(char *str)
 		return (1);
 	return (0);
 }
-
 
 int		ft_start_bef(t_last *lst)
 {

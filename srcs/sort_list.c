@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 16:04:59 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/17 13:37:14 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/17 17:57:51 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,11 +160,8 @@ int	ft_check_info(t_last *lst, t_last *dup)
 				if (ft_control_name(elem2->name, elem->content) == 1)
 				{
 					ref.dup = ft_listu(elem2->name, elem->content);
-					if (ref.i != 0)
-					{
-						if (ft_control_dbl(ref.dup, elem2->link) == 1)
-							elem2->link[ref.i++] = ft_listu(elem2->name, elem->content);
-					}
+					if (ft_control_dbl(ref.dup, elem2->link) == 1)
+						elem2->link[ref.i++] = ft_listu(elem2->name, elem->content);
 					free(ref.dup);
 				}
 			}
@@ -188,6 +185,12 @@ int ft_sort_list(t_last *lst, t_last *dup)
 			ft_add_elm_bis(dup, (char*)elem->content, ft_strlen(elem->content));
 			elem2 = dup->debut;
 			elem2->name = ft_record_name(elem->content);
+			elem2->parent = -1;
+			elem2->passe = 0;
+			if (elem->start != 1)
+				elem2->start = 0;
+			if (elem->end != 1)
+				elem2->end = 0;
 		}
 		elem = elem->prev;
 	}

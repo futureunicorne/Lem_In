@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:52:44 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/15 09:41:26 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/17 17:52:34 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,18 @@ int		ft_check_order(t_last *lst)
 		if (ft_strcmp(elem->content, "##start") == 0 && elem->prev)
 		{
 			if (ft_check_space(elem->prev->content))
+			{
+				elem->prev->start = 1;
 				auth = 1;
+			}
 		}
 		if (ft_strcmp(elem->content, "##end") == 0 && elem->prev)
 		{
 			if (ft_check_space(elem->prev->content))
+			{
+				elem->prev->end = 1;
 				auth_f = 1;
+			}
 		}
 		elem = elem->prev;
 	}
