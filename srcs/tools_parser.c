@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:55:01 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/15 14:37:19 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/17 08:07:16 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ int		ft_false_link(char *line)
 		if (!ref.dup)
 			ref.dup = ft_strsub(line, ref.j, ref.i);
 		else
-			ref.dup2 = ft_strsub(line, ref.j, ref.i);
+			ref.dup2 = ft_strsub(line, ref.j, ref.i - 1);
 		if (line[ref.i] == '-')
 			ref.auth++;
 		ref.res = ref.flag;
-		ref.i++;
+		if (line[ref.i] != '\0')
+			ref.i++;
 	}
 	if (ft_strcmp(ref.dup, ref.dup2) == 0)
 	{

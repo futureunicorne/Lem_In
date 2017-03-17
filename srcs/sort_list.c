@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 16:04:59 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/16 17:49:29 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/17 13:37:14 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,14 @@ int	ft_nb_info(t_last *lst, t_last *dup)
 
 int		ft_malloc_link(t_last *dup)
 {
-	t_list *elem;
+	t_list	*elem;
 
 	elem = dup->fin;
 	while (elem != NULL)
 	{
 		if(!(elem->link = (char**)malloc((sizeof(char*)) * (elem->nb_link + 1))))
 			return (0);
+		ft_bzero(elem->link, sizeof(elem->link));
 		elem = elem->prev;
 	}
 	return (0);
@@ -158,8 +159,13 @@ int	ft_check_info(t_last *lst, t_last *dup)
 			{
 				if (ft_control_name(elem2->name, elem->content) == 1)
 				{
-					if (ft_control_dbl(ft_listu(elem2->name, elem->content), elem2->link) == 1)
-						elem2->link[ref.i++] = ft_listu(elem2->name, elem->content);
+					ref.dup = ft_listu(elem2->name, elem->content);
+					if (ref.i != 0)
+					{
+						if (ft_control_dbl(ref.dup, elem2->link) == 1)
+							elem2->link[ref.i++] = ft_listu(elem2->name, elem->content);
+					}
+					free(ref.dup);
 				}
 			}
 			elem = elem->prev;

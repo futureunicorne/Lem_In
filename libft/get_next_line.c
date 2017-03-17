@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 15:38:37 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/12 10:33:08 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/17 07:58:00 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int		get_next_line(int fd, char **line)
 {
 	static t_last	list;
 	t_list			*elem;
-	t_list			*tmp;
 	char			buf[BUFF_SIZE + 1];
 	int				ret;
 
@@ -92,7 +91,10 @@ int		get_next_line(int fd, char **line)
 	}
 	create_line(line, elem);
 	if (!ret && !**line && !elem->content[0])
+	{
+		free (elem);
 		return (0);
+	}
 	else
 		return (1);
 	//return ((!ret && !**line && !elem->content[0]) ? 0 : 1);

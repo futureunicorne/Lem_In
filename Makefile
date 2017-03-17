@@ -6,7 +6,7 @@
 #    By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/07 18:38:35 by hel-hadi          #+#    #+#              #
-#    Updated: 2017/03/16 16:35:25 by hel-hadi         ###   ########.fr        #
+#    Updated: 2017/03/17 13:27:19 by hel-hadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS =	srcs/main.c					\
 OBJ = $(SRCS:.c=.o)
 OBJ1 = objets/*.o
 FLAGS = -Wall -Werror -Wextra
-CC = gcc
+CC = gcc -g
 OPT1 = -c
 OPT2 = -o
 

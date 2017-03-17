@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/15 14:24:01 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/17 08:04:13 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,14 @@ int		ft_check_link(char *line)
 		{
 			if (ref.flag == ref.res)
 				ref.flag++;
-			ref.i++;
+			if (line[ref.i] != '\0')
+				ref.i++;
 		}
 		if (line[ref.i] == '-')
 			ref.auth++;
-
 		ref.res = ref.flag;
-		ref.i++;
+		if (line[ref.i] != '\0')
+			ref.i++;
 	}
 	if (ref.auth == 1 && ref.flag == 2)
 		return (1);
