@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 16:04:59 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/17 17:57:51 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/19 22:09:31 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,27 @@ int	ft_check_info(t_last *lst, t_last *dup)
 	return (0);
 }
 
+int	ft_starter(t_last *lst)
+{
+	t_list	*elem;
+
+	elem = lst->fin;
+	while (elem != NULL)
+	{
+		if (ft_strcmp("start", elem->content) == 0)
+			elem->prev->start = 1;
+		elem = elem->prev;
+	}
+	elem = lst->fin;
+	while (elem != NULL)
+	{
+		if (ft_strcmp("end", elem->content) == 0)
+			elem->prev->end = 1;
+		elem = elem->prev;
+	}
+	return (0);
+}
+
 int ft_sort_list(t_last *lst, t_last *dup)
 {
 	t_list	*elem;
@@ -185,8 +206,13 @@ int ft_sort_list(t_last *lst, t_last *dup)
 			ft_add_elm_bis(dup, (char*)elem->content, ft_strlen(elem->content));
 			elem2 = dup->debut;
 			elem2->name = ft_record_name(elem->content);
-			elem2->parent = -1;
+			elem2->parent = NULL;
+			if (elem->start)
+				elem2->start = 1;
+			if (elem->end)
+				elem2->end = 1;
 			elem2->passe = 0;
+			elem2->distance = -1;
 			if (elem->start != 1)
 				elem2->start = 0;
 			if (elem->end != 1)
@@ -197,5 +223,6 @@ int ft_sort_list(t_last *lst, t_last *dup)
 	ft_nb_info(lst, dup);
 	ft_malloc_link(dup);
 	ft_check_info(lst, dup);
+	ft_starter(lst);
 	return (1);
 }

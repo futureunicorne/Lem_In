@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:24:11 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/17 17:57:25 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/19 21:17:32 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,9 @@ typedef struct		s_list
 	int				nb_link;
 	int				repere;
 	int				passe;
-	int				parent;
+	char			*parent;
 	int				indice;
+	int				distance;
 	int				ant;
 	int				start;
 	int				end;

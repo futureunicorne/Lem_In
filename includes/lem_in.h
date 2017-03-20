@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/16 17:43:11 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/19 22:05:21 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ int				ft_check_nb_ant(char *str);
 int				ft_check_rule(char *line);
 int				ft_record_general(char *line);
 int				ft_sort_list(t_last *lst, t_last *dup);
-int				ft_solve_ant(t_last *lst);
+int				ft_bfs(t_last *lst);
+int				ft_starter(t_last *lst);
+
 
 
 

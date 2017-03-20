@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:47:41 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/17 15:57:22 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 09:04:02 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ int main(int argc, char **argv)
 			return (0);
 		if (ft_parse_info(&lst))
 			return (0);
+		ft_starter(&lst);
 		ft_sort_list(&lst, &dup);
-		ft_print_begin(&lst);
 		ft_print(&dup);
-		ft_free_lst(&lst);
-		ft_free_dup(&dup);
-		ft_solve_ant(&dup);
+		ft_bfs(&dup);
+		ft_print_begin(&lst);
+		printf("DEUXIEME PARTIE ======================================\n");
+		ft_print(&dup);
+
+		//ft_free_lst(&lst);
+		//ft_free_dup(&dup);
 	}
 	return (0);
 }
