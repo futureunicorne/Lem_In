@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:52:44 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/17 17:52:34 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 16:40:35 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,32 @@ int		ft_check_dbl_enter(t_last *lst)
 		if (ft_strcmp(elem->content, "##start") == 0)
 			flag++;
 		if (ft_strcmp(elem->content, "##end") == 0)
-		 	auth++;
+			auth++;
 		elem = elem->prev;
 	}
 	if (flag == 1 && auth == 1)
 		return (1);
 	return (0);
+}
+
+void	ft_check_order_bis(t_list *elem, int auth, int auth_f)
+{
+	if (ft_strcmp(elem->content, "##start") == 0 && elem->prev)
+	{
+		if (ft_check_space(elem->prev->content))
+		{
+			elem->prev->start = 1;
+			auth = 1;
+		}
+	}
+	if (ft_strcmp(elem->content, "##end") == 0 && elem->prev)
+	{
+		if (ft_check_space(elem->prev->content))
+		{
+			elem->prev->end = 1;
+			auth_f = 1;
+		}
+	}
 }
 
 int		ft_check_order(t_last *lst)
@@ -70,24 +90,9 @@ int		ft_check_order(t_last *lst)
 	elem = lst->fin;
 	auth = 0;
 	auth_f = 0;
-	while(elem != NULL)
+	while (elem != NULL)
 	{
-		if (ft_strcmp(elem->content, "##start") == 0 && elem->prev)
-		{
-			if (ft_check_space(elem->prev->content))
-			{
-				elem->prev->start = 1;
-				auth = 1;
-			}
-		}
-		if (ft_strcmp(elem->content, "##end") == 0 && elem->prev)
-		{
-			if (ft_check_space(elem->prev->content))
-			{
-				elem->prev->end = 1;
-				auth_f = 1;
-			}
-		}
+		ft_check_order_bis(elem, auth, auth_f);
 		elem = elem->prev;
 	}
 	if (auth == 1 && auth_f == 1 && ft_start_bef(lst))

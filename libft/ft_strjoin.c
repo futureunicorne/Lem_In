@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 11:55:33 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/20 08:56:53 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 18:23:56 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ char	*ft_strjoin_b(char *s1, char *s2)
 	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(s3 = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 2) * sizeof(char))))
+	if (!(s3 = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 2)
+	* sizeof(char))))
 		return (NULL);
 	while (s1[i] != '\0')
 	{
@@ -77,7 +78,7 @@ char	*ft_strjoin_c(char *s1, char *s2)
 	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(s3 = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 2) * sizeof(char))))
+	if (!(s3 = malloc((ft_strlen(s1) + ft_strlen(s2) + 2) * sizeof(char))))
 		return (NULL);
 	while (s1[i] != '\0')
 	{
@@ -92,6 +93,6 @@ char	*ft_strjoin_c(char *s1, char *s2)
 	}
 	s3[i] = '\0';
 	if (ft_strlen(s1) != 0)
-		free (s1);
+		free(s1);
 	return (s3);
 }

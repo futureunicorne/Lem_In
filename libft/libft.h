@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:24:11 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/19 21:17:32 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 17:16:20 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ char				*ft_strjoin_b(char *s1, char *s2);
 char				*ft_strjoin_c(char *s1, char *s2);
 char				*ft_strndup(char *s, int size);
 
-
-
 typedef struct		s_list
 {
 	char			*content;
@@ -124,11 +122,10 @@ int					ft_add_elm_bis(t_last *list, void *content,
 					size_t content_size);
 void				ft_print_lst(t_last *list);
 void				ft_print(t_last *list);
-void 				ft_print_begin(t_last *list);
+void				ft_print_begin(t_last *list);
 void				ft_free_lst(t_last *list);
 void				ft_del_elem(t_last *list, t_list *elem);
 t_list				*ft_get_elem(t_last *list, size_t content_size);
 void				ft_free_dup(t_last *list);
-
 
 #endif

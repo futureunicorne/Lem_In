@@ -6,58 +6,27 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/17 08:04:13 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 18:34:58 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int		ft_check_nb_ant(char *str)
+int		ft_check_rule_bis(char *line, t_ref *ref)
 {
-	int i;
-	int flag;
-
-	i = 0;
-	flag = 0;
-	while (str[i])
+	ref->j = ref->i;
+	while ((line[ref->i] >= 48 && line[ref->i] <= 57)
+	|| (line[ref->i] >= 65 && line[ref->i] <= 90)
+	|| (line[ref->i] >= 97 && line[ref->i] <= 122))
 	{
-		if (!(str[i] >= 48 && str[i] <= 57))
-			flag = 1;
-		i++;
-	}
-	if (flag == 1)
-		return (-1);
-	else
-		return (ft_atoi(str));
-	return (0);
-}
-
-int		ft_check_link(char *line)
-{
-	t_ref ref;
-
-	ft_memset(&ref, 0, sizeof(t_ref));
-	while (line[ref.i])
-	{
-		ref.j = ref.i;
-		while ((line[ref.i] >= 48 && line[ref.i] <= 57)
-		|| (line[ref.i] >= 65 && line[ref.i] <= 90)
-		|| (line[ref.i] >= 97 && line[ref.i] <= 122))
+		if (ref->flag)
 		{
-			if (ref.flag == ref.res)
-				ref.flag++;
-			if (line[ref.i] != '\0')
-				ref.i++;
+			if (!(line[ref->i] >= 48 && line[ref->i] <= 57))
+				return (0);
 		}
-		if (line[ref.i] == '-')
-			ref.auth++;
-		ref.res = ref.flag;
-		if (line[ref.i] != '\0')
-			ref.i++;
+		ref->i++;
 	}
-	if (ref.auth == 1 && ref.flag == 2)
-		return (1);
-	return (0);
+	return (1);
 }
 
 int		ft_check_rule(char *line)
@@ -67,18 +36,8 @@ int		ft_check_rule(char *line)
 	ft_memset(&ref, 0, sizeof(t_ref));
 	while (line[ref.i])
 	{
-		ref.j = ref.i;
-		while ((line[ref.i] >= 48 && line[ref.i] <= 57)
-		|| (line[ref.i] >= 65 && line[ref.i] <= 90)
-		|| (line[ref.i] >= 97 && line[ref.i] <= 122))
-		{
-			if (ref.flag)
-			{
-				if (!(line[ref.i] >= 48 && line[ref.i] <= 57))
-					return (0);
-			}
-			ref.i++;
-		}
+		if (ft_check_rule_bis(line, &ref) == 0)
+			return (0);
 		if (ft_atoi(line + ref.j) >= 0)
 			ref.flag++;
 		if (line[ref.i] != ' ')
@@ -123,6 +82,17 @@ int		ft_record_general(char *line)
 	return (0);
 }
 
+void	ft_recup_info_bis(t_pos *pos, t_last *lst)
+{
+	if (ft_record_general(pos->line) == 0)
+		free(pos->line);
+	else
+	{
+		ft_add_elm_bis(lst, (char*)pos->line, ft_strlen(pos->line));
+		free(pos->line);
+	}
+}
+
 int		ft_recup_info(t_pos *pos, t_last *lst)
 {
 	get_next_line(pos->fd, &pos->line);
@@ -144,13 +114,7 @@ int		ft_recup_info(t_pos *pos, t_last *lst)
 			free(pos->line);
 			break ;
 		}
-		if (ft_record_general(pos->line) == 0)
-			free(pos->line);
-		else
-		{
-			ft_add_elm_bis(lst, (char*)pos->line, ft_strlen(pos->line));
-			free(pos->line);
-		}
+		ft_recup_info_bis(pos, lst);
 	}
 	return (1);
 }

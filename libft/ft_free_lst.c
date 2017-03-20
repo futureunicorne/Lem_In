@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 16:15:49 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/17 13:41:14 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 18:19:48 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_free_dup(t_last *list)
 		tmp = elem->next;
 		while (elem->link[i])
 		{
-			free (elem->link[i]);
+			free(elem->link[i]);
 			i++;
 		}
 		free(elem->link);

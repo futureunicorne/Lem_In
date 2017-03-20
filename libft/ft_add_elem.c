@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 16:14:12 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/15 19:06:53 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 18:19:20 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_add_elm(t_last *list, void *content, size_t content_size, int rep)
 	return (0);
 }
 
-int				ft_add_elm_bis(t_last *list, void *content, size_t content_size)
+int	ft_add_elm_bis(t_last *list, void *content, size_t content_size)
 {
 	t_list *elem;
 

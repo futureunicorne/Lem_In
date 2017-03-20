@@ -6,13 +6,13 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:35:40 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/20 09:01:02 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 18:32:41 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-t_list	*ft_search(t_last *lst, char *name)
+char	*ft_search_parent(t_last *lst, char *name)
 {
 	t_list *elem;
 
@@ -20,10 +20,12 @@ t_list	*ft_search(t_last *lst, char *name)
 	while (elem != NULL)
 	{
 		if (ft_strcmp(name, elem->name) == 0)
-			break;
+			break ;
 		elem = elem->prev;
 	}
-	return (elem);
+	if (elem->parent != NULL)
+		return (elem->parent);
+	return (NULL);
 }
 
 void	ft_print_parent(t_last *lst, t_list *end)
@@ -34,24 +36,27 @@ void	ft_print_parent(t_last *lst, t_list *end)
 
 	elem = end;
 	pere = elem->parent;
-	printf("%s\n", elem->name);
-	while (elem->start != 1)
+	elem2 = lst->fin;
+	ft_putstr(elem->name);
+	while (elem != NULL)
 	{
-		if (ft_strcmp(pere, elem->parent) == 0)
+		if (ft_strcmp(pere, elem->name) == 0)
 		{
-			elem2 = ft_search(lst, elem->parent);
-			pere = elem2->name;
+			ft_putstr("->");
+			ft_putstr(elem->name);
+			pere = ft_search_parent(lst, elem->name);
+			if (pere == NULL)
+				break ;
 			elem = lst->fin;
-			printf("%s\n",elem->name);
 		}
 		elem = elem->prev;
 	}
-	if (elem->start == 1)
-		printf("%s\n", elem->name);
+	elem = lst->fin;
+	ft_putstr("->");
+	ft_putstr(elem->name);
 }
 
-
-int		ft_attribute_bfs(t_last *lst, char *name, int dist)
+int		ft_attribute_bfs(t_last *lst, char *name, int dist, char *parent)
 {
 	t_list	*elem;
 
@@ -66,20 +71,21 @@ int		ft_attribute_bfs(t_last *lst, char *name, int dist)
 		return (0);
 	elem->passe = 1;
 	elem->distance = dist;
+	elem->parent = parent;
 	return (1);
 }
 
-int		ft_check_distance(t_last *lst, t_list *elem, int dist)
+int		ft_init_start(t_last *lst)
 {
-	int	i;
+	t_list *elem;
 
-	i = 0;
-	while (elem->link[i])
-	{
-		ft_attribute_bfs(lst, elem->link[i], dist);
-		i++;
-	}
-	return (0);
+	elem = lst->fin;
+	while (elem != NULL && elem->start != 1)
+		elem = elem->prev;
+	elem->distance = 0;
+	elem->parent = NULL;
+	elem->passe = 1;
+	return (elem->distance);
 }
 
 int		ft_bfs(t_last *lst)
@@ -87,29 +93,23 @@ int		ft_bfs(t_last *lst)
 	t_list	*elem;
 	int		flag_d;
 
+	flag_d = ft_init_start(lst);
 	elem = lst->fin;
-	while (elem != NULL && elem->start != 1)
-		elem = elem->prev;
-	elem->distance = 0;
-	elem->parent = NULL;
-	elem->passe = 0;
 	while (elem != NULL)
 	{
 		if (elem->distance == flag_d)
 		{
 			ft_check_distance(lst, elem, flag_d);
 			if (elem->end == 1)
-			{
-				printf("marche\n");
 				break ;
-			}
 		}
 		if (elem->prev == NULL)
 		{
-			//elem = lst->fin;
+			elem = lst->fin;
 			flag_d++;
 		}
 		elem = elem->prev;
 	}
+	ft_print_parent(lst, elem);
 	return (0);
 }

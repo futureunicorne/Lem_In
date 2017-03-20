@@ -6,11 +6,24 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:55:01 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/17 08:07:16 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 16:41:05 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+int		ft_false_link_bis(t_ref *ref)
+{
+	if (ft_strcmp(ref->dup, ref->dup2) == 0)
+	{
+		free(ref->dup);
+		free(ref->dup2);
+		return (0);
+	}
+	free(ref->dup);
+	free(ref->dup2);
+	return (1);
+}
 
 int		ft_false_link(char *line)
 {
@@ -36,14 +49,8 @@ int		ft_false_link(char *line)
 		if (line[ref.i] != '\0')
 			ref.i++;
 	}
-	if (ft_strcmp(ref.dup, ref.dup2) == 0)
-	{
-		free(ref.dup);
-		free(ref.dup2);
+	if (ft_false_link_bis(&ref) == 0)
 		return (0);
-	}
-	free(ref.dup);
-	free(ref.dup2);
 	return (1);
 }
 
@@ -69,60 +76,42 @@ int		ft_after_link(t_last *lst)
 	return (1);
 }
 
-int		ft_compare_salle(char **tab, int j)
+int		ft_check_salle_bis(t_ref *ref, char **tab)
 {
-	int i;
-	int k;
-
-	i = 0;
-	k = 0;
-	while (i < j)
+	if (ft_compare_salle(tab, ref->j) == 1)
 	{
-		k = i + 1;
-		while(k < j)
-		{
-			if (ft_strcmp(tab[i], tab[k]) == 0)
-				return (0);
-			k++;
-		}
-		i++;
+		ft_free_tab(tab, ref->j);
+		free(tab);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int		ft_check_salle(t_last *lst)
 {
 	t_list	*elem;
-	int		i;
-	int		j;
-	int		size;
 	char	**tab;
-	char	*dup;
+	t_ref	ref;
 
-	i = 0;
-	j = 0;
-	size = ft_count_dbl(lst);
-	if (!(tab = (char**)malloc((sizeof(char*)) * (size + 1))))
+	ft_memset(&ref, 0, sizeof(t_ref));
+	ref.size = ft_count_dbl(lst);
+	if (!(tab = (char**)malloc((sizeof(char*)) * (ref.size + 1))))
 		return (0);
 	elem = lst->fin;
 	while (elem != NULL)
 	{
 		if (ft_check_space(elem->content))
 		{
-			i = 0;
-			while (elem->content[i] != ' ')
-				i++;
-			dup = ft_strndup(elem->content, i);
-			tab[j] = dup;
-			j++;
+			ref.i = 0;
+			while (elem->content[ref.i] != ' ')
+				ref.i++;
+			ref.dup = ft_strndup(elem->content, ref.i);
+			tab[ref.j] = ref.dup;
+			ref.j++;
 		}
 		elem = elem->prev;
 	}
-	if (ft_compare_salle(tab, j) == 1)
-	{
-		ft_free_tab(tab, j);
-		free (tab);
+	if (ft_check_salle_bis(&ref, tab) == 1)
 		return (1);
-	}
 	return (0);
 }

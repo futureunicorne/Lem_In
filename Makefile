@@ -6,7 +6,7 @@
 #    By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/07 18:38:35 by hel-hadi          #+#    #+#              #
-#    Updated: 2017/03/17 13:27:19 by hel-hadi         ###   ########.fr        #
+#    Updated: 2017/03/20 16:54:59 by hel-hadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ SRCS =	srcs/main.c					\
 		srcs/tools_parser2.c		\
 		srcs/sort_list.c			\
 		srcs/solve.c				\
+		srcs/tools_sort.c			\
+		srcs/tools_solve.c			\
 
 OBJ = $(SRCS:.c=.o)
 OBJ1 = objets/*.o

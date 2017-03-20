@@ -6,88 +6,17 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 16:04:59 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/19 22:09:31 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 16:38:02 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int	ft_check_tiret(char *str)
+int		ft_nb_info(t_last *lst, t_last *dup)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '-')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-char	*ft_record_name(char *str)
-{
-	int		i;
-	char	*dup;
-
-	i = 0;
-	while (str[i] != ' ')
-		i++;
-	dup = ft_strsub(str, 0, i);
-	return (dup);
-}
-
-int	ft_control_name(char *name, char *tube)
-{
-	int i;
-
-	i = 0;
-	while (tube[i] != '-')
-		i++;
-	if (ft_strncmp(name, tube, i) == 0)
-		return (1);
-	i++;
-	if (ft_strcmp(name, tube + i) == 0)
-		return (1);
-	return (0);
-}
-
-char	*ft_listu(char *name, char *tube)
-{
-	int i;
-	int auth;
-	char *dup;
-
-	i = 0;
-	auth = 0;
-	dup = "";
-	while (tube[i] != '-')
-		i++;
-	if (ft_strncmp(name, tube, i) == 0)
-		auth++;
-	i++;
-	if (ft_strcmp(name, tube + i) == 0)
-		auth++;
-	if (auth)
-	{
-		i = 0;
-		while (tube[i] != '-')
-			i++;
-		if (ft_strncmp(name, tube, i) != 0)
-			dup = ft_strndup(tube, i);
-		i++;
-		if (ft_strcmp(name, tube + i) != 0)
-			dup = ft_strdup(tube + i);
-	}
-	return (dup);
-}
-
-int	ft_nb_info(t_last *lst, t_last *dup)
-{
-	t_list *elem;
-	t_list *elem2;
-	t_ref ref;
+	t_list	*elem;
+	t_list	*elem2;
+	t_ref	ref;
 
 	elem = lst->fin;
 	elem2 = dup->fin;
@@ -111,40 +40,26 @@ int	ft_nb_info(t_last *lst, t_last *dup)
 	return (0);
 }
 
-int		ft_malloc_link(t_last *dup)
+void	ft_check_info_bis(t_list *elem, t_list *elem2, t_ref *ref)
+{
+	if (ft_check_tiret(elem->content))
+	{
+		if (ft_control_name(elem2->name, elem->content) == 1)
+		{
+			ref->dup = ft_listu(elem2->name, elem->content);
+			if (ft_control_dbl(ref->dup, elem2->link) == 1)
+				elem2->link[ref->i++] =
+				ft_listu(elem2->name, elem->content);
+			free(ref->dup);
+		}
+	}
+}
+
+int		ft_check_info(t_last *lst, t_last *dup)
 {
 	t_list	*elem;
-
-	elem = dup->fin;
-	while (elem != NULL)
-	{
-		if(!(elem->link = (char**)malloc((sizeof(char*)) * (elem->nb_link + 1))))
-			return (0);
-		ft_bzero(elem->link, sizeof(elem->link));
-		elem = elem->prev;
-	}
-	return (0);
-}
-
-int	ft_control_dbl(char *new, char **tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i])
-	{
-		if (ft_strcmp(new, tab[i]) == 0)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	ft_check_info(t_last *lst, t_last *dup)
-{
-	t_list *elem;
-	t_list *elem2;
-	t_ref ref;
+	t_list	*elem2;
+	t_ref	ref;
 
 	elem = lst->fin;
 	elem2 = dup->fin;
@@ -155,16 +70,7 @@ int	ft_check_info(t_last *lst, t_last *dup)
 		ref.i = 0;
 		while (elem != NULL)
 		{
-			if (ft_check_tiret(elem->content))
-			{
-				if (ft_control_name(elem2->name, elem->content) == 1)
-				{
-					ref.dup = ft_listu(elem2->name, elem->content);
-					if (ft_control_dbl(ref.dup, elem2->link) == 1)
-						elem2->link[ref.i++] = ft_listu(elem2->name, elem->content);
-					free(ref.dup);
-				}
-			}
+			ft_check_info_bis(elem, elem2, &ref);
 			elem = elem->prev;
 		}
 		elem2 = elem2->prev;
@@ -172,7 +78,7 @@ int	ft_check_info(t_last *lst, t_last *dup)
 	return (0);
 }
 
-int	ft_starter(t_last *lst)
+int		ft_starter(t_last *lst)
 {
 	t_list	*elem;
 
@@ -193,7 +99,7 @@ int	ft_starter(t_last *lst)
 	return (0);
 }
 
-int ft_sort_list(t_last *lst, t_last *dup)
+int		ft_sort_list(t_last *lst, t_last *dup)
 {
 	t_list	*elem;
 	t_list	*elem2;
@@ -213,16 +119,11 @@ int ft_sort_list(t_last *lst, t_last *dup)
 				elem2->end = 1;
 			elem2->passe = 0;
 			elem2->distance = -1;
-			if (elem->start != 1)
-				elem2->start = 0;
-			if (elem->end != 1)
-				elem2->end = 0;
 		}
 		elem = elem->prev;
 	}
 	ft_nb_info(lst, dup);
 	ft_malloc_link(dup);
 	ft_check_info(lst, dup);
-	ft_starter(lst);
-	return (1);
+	return (0);
 }

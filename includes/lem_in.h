@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/19 22:05:21 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 18:29:01 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ typedef struct	s_ref
 	int			i;
 	int			j;
 	int			res;
+	int			size;
 	char		*dup;
 	char		*dup2;
 }				t_ref;
 
 int				ft_recup_info(t_pos *pos, t_last *lst);
 int				ft_parse_info(t_last *lst);
-void 			ft_print(t_last *list);
+void			ft_print(t_last *list);
 int				ft_check_link(char *line);
 int				ft_false_link(char *line);
 int				ft_after_link(t_last *lst);
@@ -63,8 +64,14 @@ int				ft_record_general(char *line);
 int				ft_sort_list(t_last *lst, t_last *dup);
 int				ft_bfs(t_last *lst);
 int				ft_starter(t_last *lst);
-
-
-
-
+int				ft_check_tiret(char *str);
+char			*ft_record_name(char *str);
+int				ft_control_name(char *name, char *tube);
+char			*ft_listu(char *name, char *tube);
+int				ft_malloc_link(t_last *dup);
+int				ft_check_distance(t_last *lst, t_list *elem, int dist);
+int				ft_control_dbl(char *new, char **tab);
+int				ft_compare_salle(char **tab, int j);
+int				ft_attribute_bfs(t_last *lst, char *name,
+				int dist, char *parent);
 #endif

@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 15:38:37 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/17 07:58:00 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 18:28:03 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,16 @@ void	create_line(char **line, t_list *elem)
 		elem->content = "";
 }
 
+int		get_next_line_bis(int ret, char **line, t_list *elem)
+{
+	if (!ret && !**line && !elem->content[0])
+	{
+		free(elem);
+		return (0);
+	}
+	return (1);
+}
+
 int		get_next_line(int fd, char **line)
 {
 	static t_last	list;
@@ -79,7 +89,7 @@ int		get_next_line(int fd, char **line)
 	elem = ft_check_fd(&list, fd);
 	*line = ft_strdup(elem->content);
 	if (ft_strlen(elem->content) != 0)
-		free (elem->content);
+		free(elem->content);
 	ret = 1;
 	while (ret && check(*line) == -1)
 	{
@@ -90,12 +100,8 @@ int		get_next_line(int fd, char **line)
 		*line = ft_strjoin_c(*line, buf);
 	}
 	create_line(line, elem);
-	if (!ret && !**line && !elem->content[0])
-	{
-		free (elem);
+	if (get_next_line_bis(ret, line, elem) == 0)
 		return (0);
-	}
 	else
 		return (1);
-	//return ((!ret && !**line && !elem->content[0]) ? 0 : 1);
 }
