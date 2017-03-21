@@ -6,7 +6,7 @@
 #    By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/07 18:38:35 by hel-hadi          #+#    #+#              #
-#    Updated: 2017/03/21 16:01:25 by hel-hadi         ###   ########.fr        #
+#    Updated: 2017/03/21 16:34:14 by hel-hadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC_NAME =	main.c					\
 			solve.c					\
 			tools_sort.c			\
 			tools_solve.c			\
+			lem_file.c				\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
