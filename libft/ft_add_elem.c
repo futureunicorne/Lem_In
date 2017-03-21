@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 16:14:12 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/20 18:19:20 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/21 14:49:21 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ int	ft_add_elm_bis(t_last *list, void *content, size_t content_size)
 {
 	t_list *elem;
 
-	if ((elem = malloc(sizeof(*elem))) == NULL)
+	if ((elem = (t_list*)malloc(sizeof(*elem))) == NULL)
 		return (-1);
+	ft_memset(elem, 0, sizeof(t_list));
+	elem->content = NULL;
 	elem->content_size = content_size;
-	elem->content = ft_strdup(content);
+	elem->content = ft_strdup((char*)content);
 	elem->next = list->debut;
 	elem->prev = NULL;
 	if (list->debut)

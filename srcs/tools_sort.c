@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 14:08:08 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/20 14:21:49 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/21 15:06:55 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,21 @@
 int		ft_malloc_link(t_last *dup)
 {
 	t_list	*elem;
+	int		i;
 
 	elem = dup->fin;
 	while (elem != NULL)
 	{
+		i = 0;
 		if (!(elem->link = (char**)malloc((sizeof(char*)) *
 		(elem->nb_link + 1))))
 			return (0);
-		ft_bzero(elem->link, sizeof(elem->link));
+		elem->link[elem->nb_link] = '\0';
+		while (i < elem->nb_link)
+		{
+			elem->link[i] = NULL;
+			i++;
+		}
 		elem = elem->prev;
 	}
 	return (0);
