@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:52:44 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/20 16:40:35 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 21:25:11 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,15 @@ int		ft_check_dbl_enter(t_last *lst)
 		return (1);
 	return (0);
 }
-
-void	ft_check_order_bis(t_list *elem, int auth, int auth_f)
+/*
+t_list	*ft_check_order_bis(t_list *elem, int auth, int auth_f)
 {
-	if (ft_strcmp(elem->content, "##start") == 0 && elem->prev)
-	{
-		if (ft_check_space(elem->prev->content))
-		{
-			elem->prev->start = 1;
-			auth = 1;
-		}
-	}
-	if (ft_strcmp(elem->content, "##end") == 0 && elem->prev)
-	{
-		if (ft_check_space(elem->prev->content))
-		{
-			elem->prev->end = 1;
-			auth_f = 1;
-		}
-	}
-}
+	if (auth && auth_f)
+		auth = 0;
 
+	return (elem);
+}
+*/
 int		ft_check_order(t_last *lst)
 {
 	t_list	*elem;
@@ -92,7 +80,22 @@ int		ft_check_order(t_last *lst)
 	auth_f = 0;
 	while (elem != NULL)
 	{
-		ft_check_order_bis(elem, auth, auth_f);
+		if (ft_strcmp(elem->content, "##start") == 0 && elem->prev)
+		{
+			if (ft_check_space(elem->prev->content))
+			{
+				elem->prev->start = 1;
+				auth = 1;
+			}
+		}
+		if (ft_strcmp(elem->content, "##end") == 0 && elem->prev)
+		{
+			if (ft_check_space(elem->prev->content))
+			{
+				elem->prev->end = 1;
+				auth_f = 1;
+			}
+		}
 		elem = elem->prev;
 	}
 	if (auth == 1 && auth_f == 1 && ft_start_bef(lst))
@@ -102,9 +105,9 @@ int		ft_check_order(t_last *lst)
 
 int		ft_parse_info(t_last *lst)
 {
-	if (ft_check_order(lst) == 0 || ft_check_dbl(lst) == 0
-	|| ft_check_dbl_enter(lst) == 0)
+	if (ft_check_order(lst) == 0 || ft_check_dbl(lst) == 0 || ft_check_dbl_enter(lst) == 0)
 	{
+		printf("%d\n", ft_check_order(lst));
 		ft_putstr_fd("ERROR PARSE", 1);
 		return (0);
 	}
@@ -113,5 +116,5 @@ int		ft_parse_info(t_last *lst)
 		ft_putstr_fd("ERROR PARSE 2", 1);
 		return (0);
 	}
-	return (0);
+	return (1);
 }

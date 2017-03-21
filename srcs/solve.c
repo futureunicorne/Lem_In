@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:35:40 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/20 18:32:41 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/20 19:19:36 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,10 @@ char	*ft_search_parent(t_last *lst, char *name)
 void	ft_print_parent(t_last *lst, t_list *end)
 {
 	t_list	*elem;
-	t_list	*elem2;
 	char	*pere;
 
 	elem = end;
 	pere = elem->parent;
-	elem2 = lst->fin;
 	ft_putstr(elem->name);
 	while (elem != NULL)
 	{

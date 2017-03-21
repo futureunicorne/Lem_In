@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 16:04:59 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/20 16:38:02 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/21 11:12:12 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,11 @@ int		ft_nb_info(t_last *lst, t_last *dup)
 	}
 	return (0);
 }
-
+/*
 void	ft_check_info_bis(t_list *elem, t_list *elem2, t_ref *ref)
 {
-	if (ft_check_tiret(elem->content))
-	{
-		if (ft_control_name(elem2->name, elem->content) == 1)
-		{
-			ref->dup = ft_listu(elem2->name, elem->content);
-			if (ft_control_dbl(ref->dup, elem2->link) == 1)
-				elem2->link[ref->i++] =
-				ft_listu(elem2->name, elem->content);
-			free(ref->dup);
-		}
-	}
 }
-
+*/
 int		ft_check_info(t_last *lst, t_last *dup)
 {
 	t_list	*elem;
@@ -70,7 +59,19 @@ int		ft_check_info(t_last *lst, t_last *dup)
 		ref.i = 0;
 		while (elem != NULL)
 		{
-			ft_check_info_bis(elem, elem2, &ref);
+			if (ft_check_tiret(elem->content))
+			{
+				if (ft_control_name(elem2->name, elem->content) == 1)
+				{
+					ref.dup = ft_listu(elem2->name, elem->content);
+					if (ft_control_dbl(ref.dup, elem2->link) == 1)
+					{
+						elem2->link[ref.i] = ft_listu(elem2->name, elem->content);
+						ref.i++;
+					}
+					free(ref.dup);
+				}
+			}
 			elem = elem->prev;
 		}
 		elem2 = elem2->prev;
