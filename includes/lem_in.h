@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/20 18:29:01 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/21 11:36:41 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 
-typedef struct	s_pos
+typedef struct	s_pas
 {
 	int			nb_ant;
 	int			nb_room;
@@ -27,7 +27,7 @@ typedef struct	s_pos
 	int			i;
 	int			fd;
 	char		*line;
-}				t_pos;
+}				t_pas;
 
 typedef struct	s_ref
 {
@@ -41,7 +41,7 @@ typedef struct	s_ref
 	char		*dup2;
 }				t_ref;
 
-int				ft_recup_info(t_pos *pos, t_last *lst);
+int				ft_recup_info(t_pas *pas, t_last *lst);
 int				ft_parse_info(t_last *lst);
 void			ft_print(t_last *list);
 int				ft_check_link(char *line);

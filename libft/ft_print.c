@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:56:42 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/20 18:43:54 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/21 11:39:10 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ void	ft_print(t_last *list)
 	while (elem != NULL)
 	{
 		i = 0;
-		ft_putstr(elem->content);
-		ft_putstr(elem->name);
-		ft_putnbr(elem->indice);
-		ft_putnbr(elem->ant);
-		ft_putnbr(elem->nb_link);
-		ft_putnbr(elem->distance);
-		ft_putstr(elem->parent);
+		printf("content =  %s |"  ,elem->content);
+		printf("name =  %s |" ,elem->name);
+		printf("indice = %d |" , elem->indice);
+		printf("ant = %d | ",elem->ant);
+		printf("nb_link =  %d |" , elem->nb_link);
+		printf("distance = %d |" , elem->distance);
+		printf("parent = %s \n", elem->parent);
 		while (elem->link[i])
 		{
-			ft_putstr(elem->link[i]);
+			printf(" link = %s\n", elem->link[i]);
 			i++;
 		}
 		elem = elem->prev;
@@ -44,8 +44,7 @@ void	ft_print_begin(t_last *list)
 	elem = list->fin;
 	while (elem != NULL)
 	{
-		ft_putstr(elem->content);
-		ft_putchar('\n');
+		printf("%s\n", elem->content);
 		elem = elem->prev;
 	}
 }

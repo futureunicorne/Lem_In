@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/20 19:20:39 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/21 11:35:52 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,39 +82,39 @@ int		ft_record_general(char *line)
 	return (0);
 }
 
-void	ft_recup_info_bis(t_pos *pos, t_last *lst)
+void	ft_recup_info_bis(t_pas *pas, t_last *lst)
 {
-	if (ft_record_general(pos->line) == 0)
-		free(pos->line);
+	if (ft_record_general(pas->line) == 0)
+		free(pas->line);
 	else
 	{
-		ft_add_elm_bis(lst, (char*)pos->line, ft_strlen(pos->line));
-		free(pos->line);
+		ft_add_elm_bis(lst, (char*)pas->line, ft_strlen(pas->line));
+		free(pas->line);
 	}
 }
 
-int		ft_recup_info(t_pos *pos, t_last *lst)
+int		ft_recup_info(t_pas *pas, t_last *lst)
 {
-	get_next_line(pos->fd, &pos->line);
-	if (ft_check_nb_ant(pos->line) < 0 || ft_check_nb_ant(pos->line) == 0
-	|| ft_check_nb_ant(pos->line) > 2147483647)
+	get_next_line(pas->fd, &pas->line);
+	if (ft_check_nb_ant(pas->line) < 0 || ft_check_nb_ant(pas->line) == 0
+	|| ft_check_nb_ant(pas->line) > 2147483647)
 	{
 		ft_putstr_fd("ERROR\n", 1);
-		free(pos->line);
+		free(pas->line);
 		return (0);
 	}
 	else
-		ft_add_elm_bis(lst, (char*)pos->line, ft_strlen(pos->line));
-	free(pos->line);
-	while (pos->line)
+		ft_add_elm_bis(lst, (char*)pas->line, ft_strlen(pas->line));
+	free(pas->line);
+	while (pas->line)
 	{
-		get_next_line(pos->fd, &pos->line);
-		if (pos->line[0] == '\0')
+		get_next_line(pas->fd, &pas->line);
+		if (pas->line[0] == '\0')
 		{
-			free(pos->line);
+			free(pas->line);
 			break ;
 		}
-		ft_recup_info_bis(pos, lst);
+		ft_recup_info_bis(pas, lst);
 	}
 	return (1);
 }
