@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/21 11:36:41 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/21 16:15:56 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct	s_pas
 	int			nb_tub;
 	int			i;
 	int			fd;
+	int			auth;
+	int			auth_f;
 	char		*line;
 }				t_pas;
 

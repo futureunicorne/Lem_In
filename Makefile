@@ -6,7 +6,7 @@
 #    By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/07 18:38:35 by hel-hadi          #+#    #+#              #
-#    Updated: 2017/03/21 14:37:49 by hel-hadi         ###   ########.fr        #
+#    Updated: 2017/03/21 16:01:25 by hel-hadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 LDFLAGS = -L./libft/
 LFT = -lft
 CC = gcc $(CFLAGS)
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
@@ -69,4 +69,3 @@ norme:
 	norminette $(INC_PATH)*.h
 
 .PHONY : all clean fclean re
-
