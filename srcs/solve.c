@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:35:40 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 19:04:19 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 19:47:01 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,27 +91,37 @@ t_list		*ft_bfs(t_last *lst)
 	t_list	*elem;
 	int		flag_d;
 	int		m_link;
+	int		flag;
 
 	flag_d = ft_init_start(lst);
 	elem = lst->fin;
 	m_link = 1;
+	flag = 0;
 	while (elem != NULL)
 	{
 		if (elem->distance == flag_d)
 		{
 			if (ft_check_distance(lst, elem, flag_d))
 				m_link = 1;
-			printf("%s\n");
 			if (elem->end == 1)
 				break ;
 		}
 		if (elem->prev == NULL)
 		{
+			if (m_link == 0)
+			{
+				ft_putstr("ERROR");
+				flag = 1;
+				break ;
+			}
 			elem = lst->fin;
+			m_link = 0;
 			flag_d++;
 		}
 		elem = elem->prev;
 	}
 	ft_struc_parent(lst, elem);
+	if (flag == 1)
+		return (NULL);
 	return (elem);
 }

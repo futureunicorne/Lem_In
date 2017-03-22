@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:34:16 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 18:34:23 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 19:49:20 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,5 @@ void 	ft_put_result(t_last *lst, t_list *end)
 			elem = elem->prev;
 		}
 	}
+	ft_putchar('\n');
 }

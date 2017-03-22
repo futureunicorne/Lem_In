@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:47:41 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 19:02:59 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 19:44:29 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ int	main(void)
 	if (ft_parse_info(&lst) == 0)
 		return (0);
 	ft_starter(&lst);
-	ft_print_begin(&lst);
 	ft_sort_list(&lst, &dup);
 	tmp = ft_bfs(&dup);
-	//ft_put_result(&dup, tmp);
-	// /ft_print(&dup);
+	if (tmp == NULL)
+		return (0);
+	ft_print_begin(&lst);
+	ft_put_result(&dup, tmp);
+	//ft_print(&dup);
 	ft_free_lst(&lst);
 	ft_free_dup(&dup);
 	return (0);
