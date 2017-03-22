@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:35:40 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 07:46:24 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 19:04:19 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_search_parent(t_last *lst, char *name)
 	return (NULL);
 }
 
-void 	ft_print_parent(t_last *lst, t_list *end)
+void 	ft_struc_parent(t_last *lst, t_list *end)
 {
 	t_list	*elem;
 	t_list	*tmp;
@@ -86,18 +86,22 @@ int		ft_init_start(t_last *lst)
 	return (elem->distance);
 }
 
-int		ft_bfs(t_last *lst)
+t_list		*ft_bfs(t_last *lst)
 {
 	t_list	*elem;
 	int		flag_d;
+	int		m_link;
 
 	flag_d = ft_init_start(lst);
 	elem = lst->fin;
+	m_link = 1;
 	while (elem != NULL)
 	{
 		if (elem->distance == flag_d)
 		{
-			ft_check_distance(lst, elem, flag_d);
+			if (ft_check_distance(lst, elem, flag_d))
+				m_link = 1;
+			printf("%s\n");
 			if (elem->end == 1)
 				break ;
 		}
@@ -108,7 +112,6 @@ int		ft_bfs(t_last *lst)
 		}
 		elem = elem->prev;
 	}
-	ft_print_parent(lst, elem);
-	elem = lst->fin;
-	return (0);
+	ft_struc_parent(lst, elem);
+	return (elem);
 }

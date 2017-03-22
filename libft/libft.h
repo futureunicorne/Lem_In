@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:24:11 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 07:10:36 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 13:41:57 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct		s_list
 	int				distance;
 	int				indice;
 	int				ant;
+	int				nb_ant;
 	int				start;
 	int				end;
 	size_t			content_size;

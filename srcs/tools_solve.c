@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 14:15:21 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/20 17:35:12 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 19:01:01 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,18 @@
 int		ft_check_distance(t_last *lst, t_list *elem, int dist)
 {
 	int	i;
+	int flag;
 
 	i = 0;
 	while (elem->link[i])
 	{
-		ft_attribute_bfs(lst, elem->link[i], dist + 1, elem->name);
+		if (ft_attribute_bfs(lst, elem->link[i], dist + 1, elem->name))
+			flag = 1;
 		i++;
 	}
-	return (0);
+	if (flag == 1)
+		return (1);
+	return (1);
 }
 
 int		ft_control_dbl(char *new, char **tab)

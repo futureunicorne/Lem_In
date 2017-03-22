@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:47:41 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 09:20:49 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 19:02:59 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(void)
 	t_pas	pas;
 	t_last	lst;
 	t_last	dup;
+	t_list	*tmp;
 
 	ft_init_lst(&lst);
 	ft_init_lst(&dup);
@@ -29,8 +30,8 @@ int	main(void)
 	ft_starter(&lst);
 	ft_print_begin(&lst);
 	ft_sort_list(&lst, &dup);
-	ft_bfs(&dup);
-	ft_put_result(&dup);
+	tmp = ft_bfs(&dup);
+	//ft_put_result(&dup, tmp);
 	// /ft_print(&dup);
 	ft_free_lst(&lst);
 	ft_free_dup(&dup);

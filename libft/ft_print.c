@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:56:42 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 07:21:16 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 13:44:01 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	ft_print_begin(t_last *list)
 	elem = list->fin;
 	while (elem != NULL)
 	{
-		printf("%s\n", elem->content);
+		ft_putstr(elem->content);
+		ft_putchar('\n');
 		elem = elem->prev;
 	}
 }

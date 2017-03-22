@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:34:16 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 13:21:23 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 18:34:23 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,36 +26,104 @@ char	*ft_search_fils(t_last *lst, char *name)
 	return (elem->name);
 }
 
+int 	ft_move_ant(t_last *lst, t_list *end)
+{
+	t_list	*elem;
+	t_list	*tmp;
+	char	*pere;
+	char	*start;
+
+	elem = lst->fin;
+	start = elem->name;
+	elem = end;
+	tmp = elem;
+	pere = elem->parent;
+	while (elem != NULL)
+	{
+		if (ft_strcmp(pere, elem->name) == 0)
+		{
+			if (elem->ant)
+			{
+				if (!tmp->ant || (tmp->ant && tmp->end == 1))
+				{
+					tmp->ant++;
+					tmp->nb_ant = elem->nb_ant;
+					elem->nb_ant = 0;
+					elem->ant = 0;
+				}
+			}
+			tmp = elem;
+			pere = ft_search_parent(lst, elem->name);
+			if (pere == start)
+			{
+				elem = lst->fin;
+				if ((elem->ant && (!tmp->ant)) || (elem->ant && (tmp->ant && tmp->end == 1)))
+				{
+					tmp->ant = 1;
+					elem->nb_ant++;
+					tmp->nb_ant = elem->nb_ant;
+					elem->ant--;
+				}
+				break ;
+			}
+			elem = lst->fin;
+		}
+		elem = elem->prev;
+	}
+
+	return (elem->nb_ant);
+}
+
 void 	ft_put_result(t_last *lst, t_list *end)
 {
 	t_list	*elem;
-	char	*fils;
-	char	*fils1;
+	char	*pere;
 	int		ant;
+	int		nb_ant;
+	int		flag;
 
-	while (tmp->ant != ant)
+	elem = lst->fin;
+	ant = elem->ant;
+	pere = elem->parent;
+	while (end->ant != ant)
 	{
-		elem = lst->fin;
-		fils = elem->fils;
-		fils1 = elem->name;
+		elem = end;
+		pere = elem->parent;
+		nb_ant = ft_move_ant(lst, end);
+		ft_putchar('\n');
+		flag = 0;
 		while (elem != NULL)
 		{
-			if ((ft_strcmp(elem->name, fils1) == 0))
+			if (flag == 0)
 			{
-				ft_putchar('L');
-				ft_putstr(elem->name);
-				ft_putstr("->");
+				flag = 1;
+				if (elem->ant)
+				{
+					ft_putchar('L');
+					ft_putnbr(elem->nb_ant);
+					ft_putchar('-');
+					ft_putstr(elem->name);
+					if (nb_ant != elem->nb_ant)
+						ft_putchar(' ');
+				}
 			}
-			if ((ft_strcmp(fils, elem->name) == 0))
+			if (ft_strcmp(pere, elem->name) == 0)
 			{
-				ft_putstr(elem->name);
-				if (elem->end == 1)
+				if (elem->ant)
+				{
+					ft_putchar('L');
+					ft_putnbr(elem->nb_ant);
+					ft_putchar('-');
+					ft_putstr(elem->name);
+					if (nb_ant != elem->nb_ant)
+						ft_putchar(' ');
+				}
+				pere = ft_search_parent(lst, elem->name);
+				if (pere == NULL)
 					break ;
-				ft_putstr("->");
-				fils = ft_search_fils(lst, elem->fils);
 				elem = lst->fin;
-		}
-		elem = elem->prev;
+			}
+			elem = elem->prev;
 		}
 	}
 }
