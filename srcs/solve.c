@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:35:40 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/21 17:32:06 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 07:46:24 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@ char	*ft_search_parent(t_last *lst, char *name)
 	return (NULL);
 }
 
-int 	ft_print_parent(t_last *lst, t_list *end)
+void 	ft_print_parent(t_last *lst, t_list *end)
 {
 	t_list	*elem;
+	t_list	*tmp;
 	char	*pere;
-	int		flag;
 
 	elem = end;
+	tmp = elem;
 	pere = elem->parent;
-	ft_putstr(elem->name);
-	flag = 0;
 	while (elem != NULL)
 	{
 		if (ft_strcmp(pere, elem->name) == 0)
 		{
-			flag++;
+			elem->fils = tmp->name;
+			tmp = elem;
 			pere = ft_search_parent(lst, elem->name);
 			if (pere == NULL)
 				break ;
@@ -51,9 +51,7 @@ int 	ft_print_parent(t_last *lst, t_list *end)
 		elem = elem->prev;
 	}
 	elem = lst->fin;
-	ft_putstr("->");
-	ft_putstr(elem->name);
-	return (flag + 2);
+	elem->fils = tmp->name;
 }
 
 int		ft_attribute_bfs(t_last *lst, char *name, int dist, char *parent)
@@ -92,7 +90,6 @@ int		ft_bfs(t_last *lst)
 {
 	t_list	*elem;
 	int		flag_d;
-	int		nb_path;
 
 	flag_d = ft_init_start(lst);
 	elem = lst->fin;
@@ -111,7 +108,7 @@ int		ft_bfs(t_last *lst)
 		}
 		elem = elem->prev;
 	}
-	nb_path = ft_print_parent(lst, elem);
-	printf("%d\n",nb_path);
+	ft_print_parent(lst, elem);
+	elem = lst->fin;
 	return (0);
 }

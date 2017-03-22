@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/21 16:15:56 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/21 18:38:50 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,6 @@ int				ft_control_dbl(char *new, char **tab);
 int				ft_compare_salle(char **tab, int j);
 int				ft_attribute_bfs(t_last *lst, char *name,
 				int dist, char *parent);
+void			ft_put_result(t_last *lst);
+
 #endif

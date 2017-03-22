@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 16:04:59 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/21 16:24:56 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 08:34:55 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,10 @@ int		ft_sort_list(t_last *lst, t_last *dup)
 			elem2->name = ft_record_name(elem->content);
 			elem2->parent = NULL;
 			if (elem->start)
+			{
 				elem2->start = 1;
+				elem2->ant = elem->ant;
+			}
 			if (elem->end)
 				elem2->end = 1;
 			elem2->passe = 0;

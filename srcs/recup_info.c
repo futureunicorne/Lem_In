@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/21 14:16:41 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/22 08:04:43 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	ft_recup_info_bis(t_pas *pas, t_last *lst)
 
 int		ft_recup_info(t_pas *pas, t_last *lst)
 {
+	t_list *elem;
+
 	get_next_line(pas->fd, &pas->line);
 	if (ft_check_nb_ant(pas->line) < 0 || ft_check_nb_ant(pas->line) == 0
 	|| ft_check_nb_ant(pas->line) > 2147483647)
@@ -104,7 +106,11 @@ int		ft_recup_info(t_pas *pas, t_last *lst)
 		return (0);
 	}
 	else
+	{
 		ft_add_elm_bis(lst, (char*)pas->line, ft_strlen(pas->line));
+		elem = lst->fin;
+		elem->ant = ft_atoi(elem->content);
+	}
 	free(pas->line);
 	while (pas->line)
 	{
