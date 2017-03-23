@@ -6,13 +6,13 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:35:40 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 00:00:56 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 14:54:43 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-char	*ft_search_parent(t_last *lst, char *name)
+char		*ft_search_parent(t_last *lst, char *name)
 {
 	t_list *elem;
 
@@ -28,7 +28,7 @@ char	*ft_search_parent(t_last *lst, char *name)
 	return (NULL);
 }
 
-void 	ft_struc_parent(t_last *lst, t_list *end)
+void		ft_struc_parent(t_last *lst, t_list *end)
 {
 	t_list	*elem;
 	t_list	*tmp;
@@ -54,7 +54,7 @@ void 	ft_struc_parent(t_last *lst, t_list *end)
 	elem->fils = tmp->name;
 }
 
-int		ft_attribute_bfs(t_last *lst, char *name, int dist, char *parent)
+int			ft_attribute_bfs(t_last *lst, char *name, int dist, char *parent)
 {
 	t_list	*elem;
 
@@ -73,7 +73,7 @@ int		ft_attribute_bfs(t_last *lst, char *name, int dist, char *parent)
 	return (1);
 }
 
-int		ft_init_start(t_last *lst)
+int			ft_init_start(t_last *lst)
 {
 	t_list *elem;
 
@@ -111,6 +111,7 @@ t_list		*ft_bfs(t_last *lst)
 			if (m_link == 0)
 			{
 				ft_putstr("ERROR");
+				ft_putchar('\n');
 				flag = 1;
 				break ;
 			}
@@ -120,8 +121,8 @@ t_list		*ft_bfs(t_last *lst)
 		}
 		elem = elem->prev;
 	}
-	ft_struc_parent(lst, elem);
 	if (flag == 1)
 		return (NULL);
+	ft_struc_parent(lst, elem);
 	return (elem);
 }

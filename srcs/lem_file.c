@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:34:16 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 10:17:59 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 13:36:46 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int 	ft_move_ant(t_last *lst, t_list *end)
 	elem = end;
 	tmp = elem;
 	pere = elem->parent;
+	elem = lst->fin;
 	while (elem != NULL)
 	{
 		if (ft_strcmp(pere, elem->name) == 0)
@@ -125,7 +126,6 @@ int 	ft_move_ant(t_last *lst, t_list *end)
 		}
 		elem = elem->prev;
 	}
-
 	return (elem->nb_ant);
 }
 
@@ -144,21 +144,22 @@ void 	ft_put_result(t_last *lst, t_list *end)
 	{
 		elem = end;
 		pere = elem->parent;
-		nb_ant = ft_move_ant(lst, end);
 		ft_putchar('\n');
+		nb_ant = ft_move_ant(lst, end);
 		flag = 0;
+		elem = lst->fin;
 		while (elem != NULL)
 		{
 			if (flag == 0)
 			{
 				flag = 1;
-				if (elem->ant)
+				if (end->ant)
 				{
 					ft_putchar('L');
-					ft_putnbr(elem->nb_ant);
+					ft_putnbr(end->nb_ant);
 					ft_putchar('-');
-					ft_putstr(elem->name);
-					if (nb_ant != elem->nb_ant)
+					ft_putstr(end->name);
+					if (nb_ant != end->nb_ant)
 						ft_putchar(' ');
 				}
 			}
