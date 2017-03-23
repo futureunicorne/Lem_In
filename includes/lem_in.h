@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 18:21:00 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 19:33:53 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct	s_ref
 	int			m_link;
 	int			i;
 	int			j;
+	int			nb_ant;
+	int			ant;
 	int			res;
 	int			size;
 	char		*start;

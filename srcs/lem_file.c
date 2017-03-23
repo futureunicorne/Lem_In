@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:34:16 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 18:53:46 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 19:51:11 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,45 @@ int			ft_move_ant(t_last *lst, t_list *end)
 	return (elem->nb_ant);
 }
 
+void 		ft_put_result_bis(t_ref *ref, t_list *end)
+{
+	if (ref->flag == 0)
+	{
+		ref->flag = 1;
+		if (end->ant)
+		{
+			ft_putchar('L');
+			ft_putnbr(end->nb_ant);
+			ft_putchar('-');
+			ft_putstr(end->name);
+			if (ref->nb_ant != end->nb_ant)
+				ft_putchar(' ');
+		}
+	}
+}
+
+t_list		*ft_put_result_bis2(t_last *lst, t_ref *ref, t_list *elem)
+{
+	if (ft_strcmp(ref->pere, elem->name) == 0)
+	{
+		if (elem->ant)
+		{
+			ft_putchar('L');
+			ft_putnbr(elem->nb_ant);
+			ft_putchar('-');
+			ft_putstr(elem->name);
+			if (ref->nb_ant != elem->nb_ant)
+				ft_putchar(' ');
+		}
+		ref->pere = ft_search_parent(lst, elem->name);
+		if (ref->pere == NULL)
+			return (NULL);
+		elem = lst->fin;
+		return (elem);
+	}
+	return (elem);
+}
+
 void		ft_put_result(t_last *lst, t_list *end)
 {
 	t_list	*elem;
@@ -74,47 +113,22 @@ void		ft_put_result(t_last *lst, t_list *end)
 
 	ft_memset(&ref, 0, sizeof(t_ref));
 	elem = lst->fin;
-	ant = elem->ant;
-	pere = elem->parent;
-	while (end->ant != ant)
+	ref.ant = elem->ant;
+	ref.pere = elem->parent;
+	while (end->ant != ref.ant)
 	{
 		elem = end;
-		pere = elem->parent;
+		ref.pere = elem->parent;
 		ft_putchar('\n');
-		nb_ant = ft_move_ant(lst, end);
-		flag = 0;
+		ref.nb_ant = ft_move_ant(lst, end);
+		ref.flag = 0;
 		elem = lst->fin;
 		while (elem != NULL)
 		{
-			if (flag == 0)
-			{
-				flag = 1;
-				if (end->ant)
-				{
-					ft_putchar('L');
-					ft_putnbr(end->nb_ant);
-					ft_putchar('-');
-					ft_putstr(end->name);
-					if (nb_ant != end->nb_ant)
-						ft_putchar(' ');
-				}
-			}
-			if (ft_strcmp(pere, elem->name) == 0)
-			{
-				if (elem->ant)
-				{
-					ft_putchar('L');
-					ft_putnbr(elem->nb_ant);
-					ft_putchar('-');
-					ft_putstr(elem->name);
-					if (nb_ant != elem->nb_ant)
-						ft_putchar(' ');
-				}
-				pere = ft_search_parent(lst, elem->name);
-				if (pere == NULL)
-					break ;
-				elem = lst->fin;
-			}
+			ft_put_result_bis(&ref, end);
+			elem = ft_put_result_bis2(lst, &ref, elem);
+			if (elem == NULL)
+				break ;
 			elem = elem->prev;
 		}
 	}
