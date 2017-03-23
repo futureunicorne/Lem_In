@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 00:03:22 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 15:17:45 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,13 @@ int		ft_record_general(char *line)
 	return (0);
 }
 
-int	ft_recup_info_bis(t_pas *pas, t_last *lst)
+int		ft_recup_info_bis(t_pas *pas, t_last *lst)
 {
+	if (pas->line[0] == '\0')
+	{
+		free(pas->line);
+		return (0);
+	}
 	if (ft_record_general(pas->line) == 0)
 	{
 		free(pas->line);
@@ -119,11 +124,6 @@ int		ft_recup_info(t_pas *pas, t_last *lst)
 	while (pas->line)
 	{
 		get_next_line(pas->fd, &pas->line);
-		if (pas->line[0] == '\0')
-		{
-			free(pas->line);
-			break ;
-		}
 		if (ft_recup_info_bis(pas, lst) == 0)
 			break ;
 	}

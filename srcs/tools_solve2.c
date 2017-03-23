@@ -1,37 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print.c                                         :+:      :+:    :+:   */
+/*   tools_solve2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/12 10:56:42 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 14:52:46 by hel-hadi         ###   ########.fr       */
+/*   Created: 2017/03/23 15:14:56 by hel-hadi          #+#    #+#             */
+/*   Updated: 2017/03/23 15:29:07 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/lem_in.h"
 
-void	ft_print(t_last *list)
-{
-	t_list	*elem;
-
-	elem = list->fin;
-	while (elem != NULL)
-	{
-		elem = elem->prev;
-	}
-}
-
-void	ft_print_begin(t_last *list)
+char	*ft_search_parent(t_last *lst, char *name)
 {
 	t_list *elem;
 
-	elem = list->fin;
+	elem = lst->fin;
 	while (elem != NULL)
 	{
-		ft_putstr(elem->content);
-		ft_putchar('\n');
+		if (ft_strcmp(name, elem->name) == 0)
+			break ;
 		elem = elem->prev;
 	}
+	if (elem->parent != NULL)
+		return (elem->parent);
+	return (NULL);
+}
+
+int		ft_starter(t_last *lst)
+{
+	t_list	*elem;
+
+	elem = lst->fin;
+	while (elem != NULL)
+	{
+		if (ft_strcmp("start", elem->content) == 0)
+			elem->prev->start = 1;
+		elem = elem->prev;
+	}
+	elem = lst->fin;
+	while (elem != NULL)
+	{
+		if (ft_strcmp("end", elem->content) == 0)
+			elem->prev->end = 1;
+		elem = elem->prev;
+	}
+	return (0);
 }

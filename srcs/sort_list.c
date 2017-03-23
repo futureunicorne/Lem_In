@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 16:04:59 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 08:39:27 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 15:29:38 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,25 +80,15 @@ int		ft_check_info(t_last *lst, t_last *dup)
 	return (0);
 }
 
-int		ft_starter(t_last *lst)
+void	ft_sort_list_bis(t_list *elem, t_list *elem2, int ant)
 {
-	t_list	*elem;
-
-	elem = lst->fin;
-	while (elem != NULL)
+	if (elem->start)
 	{
-		if (ft_strcmp("start", elem->content) == 0)
-			elem->prev->start = 1;
-		elem = elem->prev;
+		elem2->start = 1;
+		elem2->ant = ant;
 	}
-	elem = lst->fin;
-	while (elem != NULL)
-	{
-		if (ft_strcmp("end", elem->content) == 0)
-			elem->prev->end = 1;
-		elem = elem->prev;
-	}
-	return (0);
+	if (elem->end)
+		elem2->end = 1;
 }
 
 int		ft_sort_list(t_last *lst, t_last *dup)
@@ -117,13 +107,7 @@ int		ft_sort_list(t_last *lst, t_last *dup)
 			elem2 = dup->debut;
 			elem2->name = ft_record_name(elem->content);
 			elem2->parent = NULL;
-			if (elem->start)
-			{
-				elem2->start = 1;
-				elem2->ant = ant;
-			}
-			if (elem->end)
-				elem2->end = 1;
+			ft_sort_list_bis(elem, elem2, ant);
 			elem2->passe = 0;
 			elem2->distance = -1;
 		}

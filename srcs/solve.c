@@ -6,27 +6,11 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:35:40 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 14:54:43 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 15:15:49 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-char		*ft_search_parent(t_last *lst, char *name)
-{
-	t_list *elem;
-
-	elem = lst->fin;
-	while (elem != NULL)
-	{
-		if (ft_strcmp(name, elem->name) == 0)
-			break ;
-		elem = elem->prev;
-	}
-	if (elem->parent != NULL)
-		return (elem->parent);
-	return (NULL);
-}
 
 void		ft_struc_parent(t_last *lst, t_list *end)
 {
@@ -86,42 +70,48 @@ int			ft_init_start(t_last *lst)
 	return (elem->distance);
 }
 
+t_list		*ft_bfs_bis(t_ref *ref, t_list *elem, t_last *lst)
+{
+	if (elem->prev == NULL)
+	{
+		if (ref->m_link == 0)
+		{
+			ft_putstr("ERROR");
+			ft_putchar('\n');
+			ref->flag = 1;
+			return (NULL);
+		}
+		elem = lst->fin;
+		ref->m_link = 0;
+		ref->flag_d++;
+	}
+	return (elem);
+}
+
 t_list		*ft_bfs(t_last *lst)
 {
 	t_list	*elem;
-	int		flag_d;
-	int		m_link;
-	int		flag;
+	t_ref	ref;
 
-	flag_d = ft_init_start(lst);
+	ft_memset(&ref, 0, sizeof(t_ref));
+	ref.flag_d = ft_init_start(lst);
 	elem = lst->fin;
-	m_link = 1;
-	flag = 0;
+	ref.m_link = 1;
 	while (elem != NULL)
 	{
-		if (elem->distance == flag_d)
+		if (elem->distance == ref.flag_d)
 		{
-			if (ft_check_distance(lst, elem, flag_d))
-				m_link = 1;
+			if (ft_check_distance(lst, elem, ref.flag_d))
+				ref.m_link = 1;
 			if (elem->end == 1)
 				break ;
 		}
-		if (elem->prev == NULL)
-		{
-			if (m_link == 0)
-			{
-				ft_putstr("ERROR");
-				ft_putchar('\n');
-				flag = 1;
-				break ;
-			}
-			elem = lst->fin;
-			m_link = 0;
-			flag_d++;
-		}
+		elem = ft_bfs_bis(&ref, elem, lst);
+		if (elem == NULL)
+			break ;
 		elem = elem->prev;
 	}
-	if (flag == 1)
+	if (ref.flag == 1)
 		return (NULL);
 	ft_struc_parent(lst, elem);
 	return (elem);

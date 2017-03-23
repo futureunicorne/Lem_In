@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 10:09:52 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 18:21:00 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,14 @@ typedef struct	s_ref
 {
 	int			auth;
 	int			flag;
+	int			flag_d;
+	int			m_link;
 	int			i;
 	int			j;
 	int			res;
 	int			size;
+	char		*start;
+	char		*pere;
 	char		*dup;
 	char		*dup2;
 }				t_ref;
@@ -80,7 +84,8 @@ void			ft_put_result(t_last *lst, t_list *end);
 char			*ft_search_parent(t_last *lst, char *name);
 t_list			*switch_start(t_last *lst);
 void			ft_free_switch(t_last *lst);
-
+int				ft_starter(t_last *lst);
+char			*ft_search_fils(t_last *lst, char *name);
 
 
 

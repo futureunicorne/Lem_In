@@ -6,7 +6,7 @@
 #    By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/07 18:38:35 by hel-hadi          #+#    #+#              #
-#    Updated: 2017/03/23 09:59:50 by hel-hadi         ###   ########.fr        #
+#    Updated: 2017/03/23 17:19:14 by hel-hadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRC_NAME =	main.c					\
 			solve.c					\
 			tools_sort.c			\
 			tools_solve.c			\
+			tools_solve2.c			\
+			tools_solve3.c			\
 			lem_file.c				\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
