@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:34:16 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 18:52:31 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 18:53:46 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,9 @@ int			ft_move_ant(t_last *lst, t_list *end)
 void		ft_put_result(t_last *lst, t_list *end)
 {
 	t_list	*elem;
-	char	*pere;
-	int		ant;
-	int		nb_ant;
-	int		flag;
+	t_ref	ref;
 
+	ft_memset(&ref, 0, sizeof(t_ref));
 	elem = lst->fin;
 	ant = elem->ant;
 	pere = elem->parent;
