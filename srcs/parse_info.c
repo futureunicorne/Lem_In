@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:52:44 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/21 16:18:26 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 00:45:47 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		ft_check_order(t_last *lst)
 		ft_check_order_bis(elem, &pas);
 		elem = elem->prev;
 	}
-	if (pas.auth == 1 && pas.auth_f == 1 && ft_start_bef(lst))
+	if (pas.auth == 1 && pas.auth_f == 1)
 		return (1);
 	return (0);
 }
@@ -103,8 +103,7 @@ int		ft_parse_info(t_last *lst)
 	if (ft_check_order(lst) == 0 || ft_check_dbl(lst) == 0
 	|| ft_check_dbl_enter(lst) == 0)
 	{
-		printf("%d\n", ft_check_order(lst));
-		ft_putstr_fd("ERROR PARSE", 1);
+		ft_putstr_fd("ERROR PARSE 3", 1);
 		return (0);
 	}
 	if (ft_check_salle(lst) == 0 || ft_after_link(lst) == 0)

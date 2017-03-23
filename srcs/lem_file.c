@@ -6,11 +6,66 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:34:16 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 19:49:20 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 10:17:59 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+t_list	*switch_start(t_last *lst)
+{
+	t_list	*elem;
+	t_list	*tmp;
+	t_list	*tmp1;
+	t_last	dup;
+
+	elem = lst->fin;
+	tmp1 = NULL;
+	tmp = lst->fin;
+	ft_init_lst(&dup);
+	while (elem != NULL)
+	{
+		if (elem->start == 1)
+		{
+			ft_add_elm_bis(&dup, (char*)"", ft_strlen(elem->content));
+			tmp1 = dup.fin;
+			tmp1->content = elem->content;
+			tmp1->name = elem->name;
+			tmp1->start = elem->start;
+			tmp1->ant = elem->ant;
+			tmp1->distance = elem->distance;
+			tmp1->nb_link = elem->nb_link;
+			tmp1->parent = elem->parent;
+			tmp1->fils = elem->fils;
+			tmp1->link = elem->link;
+
+			elem->content = tmp->content;
+			elem->name = tmp->name;
+			elem->start = tmp->start;
+			elem->ant = tmp->ant;
+			elem->distance = tmp->distance;
+			elem->nb_link = tmp->nb_link;
+			elem->parent = tmp->parent;
+			elem->fils = tmp->fils;
+			elem->link = tmp->link;
+			break ;
+		}
+		elem = elem->prev;
+	}
+	elem = lst->fin;
+	tmp1 = dup.fin;
+	elem->content = tmp1->content;
+	elem->name = tmp1->name;
+	elem->start = tmp1->start;
+	elem->ant = tmp1->ant;
+	elem->distance = tmp1->distance;
+	elem->nb_link = tmp1->nb_link;
+	elem->parent = tmp1->parent;
+	elem->fils = tmp1->fils;
+	elem->link = tmp1->link;
+	ft_free_switch(&dup);
+	return (elem);
+}
 
 char	*ft_search_fils(t_last *lst, char *name)
 {

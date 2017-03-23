@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 13:46:57 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 10:09:52 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ int				ft_attribute_bfs(t_last *lst, char *name,
 				int dist, char *parent);
 void			ft_put_result(t_last *lst, t_list *end);
 char			*ft_search_parent(t_last *lst, char *name);
+t_list			*switch_start(t_last *lst);
+void			ft_free_switch(t_last *lst);
+
+
 
 
 #endif
