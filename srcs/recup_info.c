@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 15:17:45 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/24 12:04:34 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 int		ft_check_rule_bis(char *line, t_ref *ref)
 {
 	ref->j = ref->i;
-	while ((line[ref->i] >= 48 && line[ref->i] <= 57)
-	|| (line[ref->i] >= 65 && line[ref->i] <= 90)
-	|| (line[ref->i] >= 97 && line[ref->i] <= 122))
+	while ((line[ref->i] >= 33 && line[ref->i] <= 44)
+	|| (line[ref->i] >= 46 && line[ref->i] <= 126))
 	{
 		if (ref->flag)
 		{
@@ -110,7 +109,7 @@ int		ft_recup_info(t_pas *pas, t_last *lst)
 	if (ft_check_nb_ant(pas->line) < 0 || ft_check_nb_ant(pas->line) == 0
 	|| ft_check_nb_ant(pas->line) > 2147483647)
 	{
-		ft_putstr_fd("ERROR\n", 1);
+		ft_putstr_fd("ERROR 1\n", 1);
 		free(pas->line);
 		return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:52:44 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 00:45:47 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/23 20:01:19 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,12 @@ int		ft_parse_info(t_last *lst)
 	if (ft_check_order(lst) == 0 || ft_check_dbl(lst) == 0
 	|| ft_check_dbl_enter(lst) == 0)
 	{
-		ft_putstr_fd("ERROR PARSE 3", 1);
+		ft_putstr_fd("ERROR PARSE 2", 1);
 		return (0);
 	}
 	if (ft_check_salle(lst) == 0 || ft_after_link(lst) == 0)
 	{
-		ft_putstr_fd("ERROR PARSE 2", 1);
+		ft_putstr_fd("ERROR PARSE 3", 1);
 		return (0);
 	}
 	return (1);

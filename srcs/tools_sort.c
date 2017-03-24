@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 14:08:08 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/21 16:32:44 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/24 14:04:32 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		ft_control_name(char *name, char *tube)
 	i = 0;
 	while (tube[i] != '-')
 		i++;
-	if (ft_strncmp(name, tube, i) == 0)
+	if (ft_strncmp_test(name, tube, i) == 0)
 		return (1);
 	i++;
 	if (ft_strcmp(name, tube + i) == 0)
@@ -85,7 +85,7 @@ char	*ft_listu(char *name, char *tube)
 	dup = "";
 	while (tube[ref.i] != '-')
 		ref.i++;
-	if (ft_strncmp(name, tube, ref.i) == 0)
+	if (ft_strncmp_test(name, tube, ref.i) == 0)
 		ref.auth++;
 	ref.i++;
 	if (ft_strcmp(name, tube + ref.i) == 0)
@@ -95,7 +95,7 @@ char	*ft_listu(char *name, char *tube)
 		ref.i = 0;
 		while (tube[ref.i] != '-')
 			ref.i++;
-		if (ft_strncmp(name, tube, ref.i) != 0)
+		if (ft_strncmp_test(name, tube, ref.i) != 0)
 			dup = ft_strndup(tube, ref.i);
 		ref.i++;
 		if (ft_strcmp(name, tube + ref.i) != 0)

@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:24:11 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/22 13:41:57 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/24 13:05:31 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ char				*ft_strjoin_b(char *s1, char *s2);
 char				*ft_strjoin_c(char *s1, char *s2);
 char				*ft_strndup(char *s, int size);
 char				*ft_strdup_v(const char *s);
+int	ft_strncmp_test(const char *s1, const char *s2, size_t n);
 
 typedef struct		s_list
 {

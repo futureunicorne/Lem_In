@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 14:15:21 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 10:00:23 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/24 12:05:45 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,8 @@ int		ft_check_link(char *line)
 	while (line[ref.i])
 	{
 		ref.j = ref.i;
-		while ((line[ref.i] >= 48 && line[ref.i] <= 57)
-		|| (line[ref.i] >= 65 && line[ref.i] <= 90)
-		|| (line[ref.i] >= 97 && line[ref.i] <= 122))
+		while ((line[ref.i] >= 33 && line[ref.i] <= 44)
+		|| (line[ref.i] >= 46 && line[ref.i] <= 126))
 		{
 			if (ref.flag == ref.res)
 				ref.flag++;

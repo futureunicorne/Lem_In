@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 17:17:56 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 17:20:10 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/24 14:41:09 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,35 @@ char	*ft_search_fils(t_last *lst, char *name)
 		elem = elem->prev;
 	}
 	return (elem->name);
+}
+
+int		check_link_ob(t_last *lst)
+{
+	t_list	*elem;
+
+	elem = lst->fin;
+	while (elem != NULL)
+	{
+		if (elem->start == 1)
+		{
+			if (!elem->link[0])
+				return (0);
+			else
+				break ;
+		}
+		elem = elem->prev;
+	}
+	elem = lst->fin;
+	while (elem != NULL)
+	{
+		if (elem->end == 1)
+		{
+			if (!elem->link[0])
+				return (0);
+			else
+				break ;
+		}
+		elem = elem->prev;
+	}
+	return (1);
 }
