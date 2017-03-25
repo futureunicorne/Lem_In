@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:34:16 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/24 13:56:47 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:04:17 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_list		*ft_move_ant_bis(t_last *lst, t_list *elem, t_list *tmp, t_ref *ref)
 			elem->nb_ant = 0;
 			elem->ant = 0;
 		}
-
 	ref->pere = ft_search_parent(lst, elem->name);
 	if (ref->pere != NULL)
 		tmp = elem;
@@ -36,7 +35,6 @@ t_list		*ft_move_ant_bis(t_last *lst, t_list *elem, t_list *tmp, t_ref *ref)
 		ref->flag = 1;
 		return (NULL);
 	}
-
 	if (ref->pere == ref->start)
 	{
 		elem = lst->fin;
@@ -80,7 +78,7 @@ int			ft_move_ant(t_last *lst, t_list *end)
 	return (elem->nb_ant);
 }
 
-void 		ft_put_result_bis(t_ref *ref, t_list *end)
+void		ft_put_result_bis(t_ref *ref, t_list *end)
 {
 	if (ref->flag == 0)
 	{

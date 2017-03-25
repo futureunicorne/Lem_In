@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 17:17:56 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/24 16:45:35 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:17:38 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ int		check_link_ob(t_last *lst)
 		{
 			if (!elem->link[0])
 				return (0);
-			else
-				break ;
+			break ;
 		}
 		elem = elem->prev;
 	}
@@ -88,8 +87,7 @@ int		check_link_ob(t_last *lst)
 		{
 			if (!elem->link[0])
 				return (0);
-			else
-				break ;
+			break ;
 		}
 		elem = elem->prev;
 	}

@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 14:08:08 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/25 10:44:15 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:13:44 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,13 @@ int		ft_control_name(char *name, char *tube)
 char	*ft_listu(char *name, char *tube)
 {
 	t_ref	ref;
-	char	*dup;
 
 	ft_memset(&ref, 0, sizeof(t_ref));
-	dup = "";
+	ref.dup = "";
 	while (tube[ref.i] != '-')
 		ref.i++;
-	if (ft_strncmp_test(name, tube, ref.i) == 0)
+	ref.dup2 = ft_strsub(tube, 0, ref.i);
+	if (ft_strcmp(name, ref.dup2) == 0)
 		ref.auth++;
 	ref.i++;
 	if (ft_strcmp(name, tube + ref.i) == 0)
@@ -104,11 +104,12 @@ char	*ft_listu(char *name, char *tube)
 		ref.i = 0;
 		while (tube[ref.i] != '-')
 			ref.i++;
-		if (ft_strncmp_test(name, tube, ref.i) != 0)
-			dup = ft_strndup(tube, ref.i);
+		if (ft_strcmp(name, ref.dup2) != 0)
+			ref.dup = ft_strndup(tube, ref.i);
 		ref.i++;
 		if (ft_strcmp(name, tube + ref.i) != 0)
-			dup = ft_strdup(tube + ref.i);
+			ref.dup = ft_strdup(tube + ref.i);
 	}
-	return (dup);
+	free(ref.dup2);
+	return (ref.dup);
 }

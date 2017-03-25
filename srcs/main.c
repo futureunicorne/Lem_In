@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:47:41 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/25 14:02:05 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:01:59 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,13 @@ int	main(void)
 	ft_memset(&pas, 0, sizeof(t_pas));
 	pas.fd = 0;
 	if (ft_recup_info(&pas, &lst) == 0)
-	{
-		ft_free_lst(&lst);
 		return (0);
-	}
 	if (ft_parse_info(&lst) == 0)
 	{
 		ft_free_lst(&lst);
 		return (0);
 	}
-	if (ft_sort_list(&lst, &dup) == 0)
-	{
-		ft_free_lst(&lst);
-		ft_free_dup(&dup);
-		return (0);
-	}
+	ft_sort_list(&lst, &dup);
 	ft_starter(&lst);
 	if (check_link_ob(&dup) == 0)
 	{

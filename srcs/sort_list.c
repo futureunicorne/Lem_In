@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 16:04:59 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/25 14:01:30 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:06:55 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_check_info_bis(t_list *elem, t_list *elem2, t_ref *ref)
 					elem2->link[ref->i] = ft_listu(elem2->name, elem->content);
 					ref->i++;
 				}
-				free(ref->dup);
 			}
 		}
 		elem = elem->prev;
@@ -99,7 +98,6 @@ int		ft_sort_list(t_last *lst, t_last *dup)
 
 	elem = lst->fin;
 	ant = elem->ant;
-	//printf("oui\n");
 	while (elem != NULL)
 	{
 		if (ft_check_space(elem->content))

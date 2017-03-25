@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:35:40 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/25 10:41:12 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:18:30 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,16 @@ int			ft_attribute_bfs(t_last *lst, char *name, int dist, char *parent)
 	while (elem != NULL)
 	{
 		if (ft_strcmp(name, elem->name) == 0)
+		{
+			if (elem->passe == 1)
+				return (0);
+			elem->passe = 1;
+			elem->distance = dist;
+			elem->parent = parent;
 			break ;
+		}
 		elem = elem->prev;
 	}
-	if (elem->passe == 1)
-		return (0);
-	elem->passe = 1;
-	elem->distance = dist;
-	elem->parent = parent;
 	return (1);
 }
 

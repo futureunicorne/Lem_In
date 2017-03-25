@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/25 13:57:29 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:21:34 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,12 @@ int		ft_recup_info_bis(t_pas *pas, t_last *lst)
 		return (0);
 	if (ft_record_general(pas->line) == 0)
 	{
-		//free(pas->line);
+		free(pas->line);
 		return (0);
 	}
 	else
 		ft_add_elm_bis(lst, (char*)pas->line, ft_strlen(pas->line));
+	free(pas->line);
 	return (1);
 }
 
@@ -106,7 +107,8 @@ int		ft_recup_info(t_pas *pas, t_last *lst)
 	|| ft_check_nb_ant(pas->line) > 2147483647)
 	{
 		ft_putendl("ERROR");
-		free(pas->line);
+		if (pas->line[0])
+			free(pas->line);
 		return (0);
 	}
 	else
@@ -114,17 +116,12 @@ int		ft_recup_info(t_pas *pas, t_last *lst)
 		ft_add_elm_bis(lst, (char*)pas->line, ft_strlen(pas->line));
 		elem = lst->fin;
 		elem->ant = ft_atoi(elem->content);
-		free (pas->line);
+		free(pas->line);
 	}
-	//free(pas->line);
 	while (get_next_line(pas->fd, &pas->line) > 0)
 	{
 		if (ft_recup_info_bis(pas, lst) == 0)
-		{
-			free(pas->line);
 			break ;
-		}
-		free (pas->line);
 	}
 	return (1);
 }
