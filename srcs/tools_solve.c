@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 14:15:21 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/24 12:05:45 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/25 13:46:45 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ int		ft_check_nb_ant(char *str)
 	if (flag == 1)
 		return (-1);
 	else
-		return (ft_atoi(str));
+	{
+		if (ft_atoi(str) && ft_strlen(str) <= 11)
+			return (ft_atoi(str));
+	}
 	return (0);
 }
 

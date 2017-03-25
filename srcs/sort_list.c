@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 16:04:59 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/24 16:29:54 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/25 14:01:30 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int		ft_sort_list(t_last *lst, t_last *dup)
 
 	elem = lst->fin;
 	ant = elem->ant;
+	//printf("oui\n");
 	while (elem != NULL)
 	{
 		if (ft_check_space(elem->content))
