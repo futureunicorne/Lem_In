@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 14:08:08 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/24 14:04:32 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/25 10:44:15 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,25 @@ char	*ft_record_name(char *str)
 
 int		ft_control_name(char *name, char *tube)
 {
-	int i;
+	int		i;
+	char	*str;
 
 	i = 0;
 	while (tube[i] != '-')
 		i++;
-	if (ft_strncmp_test(name, tube, i) == 0)
+	str = ft_strsub(tube, 0, i);
+	if (ft_strcmp(name, str) == 0)
+	{
+		free(str);
 		return (1);
+	}
 	i++;
 	if (ft_strcmp(name, tube + i) == 0)
+	{
+		free(str);
 		return (1);
+	}
+	free(str);
 	return (0);
 }
 

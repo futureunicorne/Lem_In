@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:35:40 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/23 20:01:35 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/25 10:41:12 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_list		*ft_bfs_bis(t_ref *ref, t_list *elem, t_last *lst)
 	{
 		if (ref->m_link == 0)
 		{
-			ft_putstr("ERROR 4");
+			ft_putendl("ERROR");
 			ft_putchar('\n');
 			ref->flag = 1;
 			return (NULL);

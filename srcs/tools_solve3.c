@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 17:17:56 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/24 14:41:09 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/24 16:45:35 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_list	*switch_tools(t_list *tmp, t_list *elem)
 	tmp->content = elem->content;
 	tmp->name = elem->name;
 	tmp->start = elem->start;
+	tmp->end = elem->end;
 	tmp->ant = elem->ant;
 	tmp->distance = elem->distance;
 	tmp->nb_link = elem->nb_link;
