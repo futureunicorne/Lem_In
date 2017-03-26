@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/26 11:32:42 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/26 12:46:59 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int		ft_recup_info(t_pas *pas, t_last *lst)
 		if (ft_recup_info_bis(pas, lst) == 0)
 			break ;
 	}
-	//free(pas->line);
+	if (pas->line)
+		free(pas->line);
 	return (1);
 }
