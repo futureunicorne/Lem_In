@@ -6,12 +6,11 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:55:01 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/26 12:22:50 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/26 15:23:33 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
 
 int		ft_false_link_bis(t_ref *ref)
 {
@@ -54,7 +53,6 @@ int		ft_false_link(char *line)
 		return (0);
 	return (1);
 }
-
 
 int		ft_after_link(t_last *lst)
 {

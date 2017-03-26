@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:52:44 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/26 12:18:04 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/26 15:40:55 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,6 @@ int		ft_parse_info(t_last *lst)
 	}
 	if (ft_check_salle(lst) == 0 || ft_after_link(lst) == 0)
 	{
-		printf("salle %d\n", ft_check_salle(lst));
-		printf("link %d\n", ft_after_link(lst));
 		ft_putendl("ERROR");
 		return (0);
 	}

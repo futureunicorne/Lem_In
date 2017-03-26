@@ -6,13 +6,13 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 17:17:56 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/25 16:17:38 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/26 15:39:55 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-t_list	*switch_tools(t_list *tmp, t_list *elem)
+t_list		*switch_tools(t_list *tmp, t_list *elem)
 {
 	tmp->content = elem->content;
 	tmp->name = elem->name;
@@ -27,7 +27,7 @@ t_list	*switch_tools(t_list *tmp, t_list *elem)
 	return (tmp);
 }
 
-t_list	*switch_start(t_last *lst)
+t_list		*switch_start(t_last *lst)
 {
 	t_list	*elem;
 	t_list	*tmp;
@@ -51,7 +51,7 @@ t_list	*switch_start(t_last *lst)
 	return (elem);
 }
 
-char	*ft_search_fils(t_last *lst, char *name)
+char		*ft_search_fils(t_last *lst, char *name)
 {
 	t_list *elem;
 
@@ -65,7 +65,7 @@ char	*ft_search_fils(t_last *lst, char *name)
 	return (elem->name);
 }
 
-int		check_link_ob(t_last *lst)
+int			check_link_ob(t_last *lst)
 {
 	t_list	*elem;
 
@@ -92,4 +92,21 @@ int		check_link_ob(t_last *lst)
 		elem = elem->prev;
 	}
 	return (1);
+}
+
+t_list		*ft_move_bis2(t_last *lst, t_list *elem, t_list *tmp, t_ref *ref)
+{
+	if (elem->ant)
+		if (!tmp->ant || (tmp->ant && tmp->end == 1))
+		{
+			tmp->ant++;
+			ref->flag = 1;
+			tmp->nb_ant = elem->nb_ant;
+			elem->nb_ant = 0;
+			elem->ant = 0;
+		}
+	ref->pere = ft_search_parent(lst, elem->name);
+	if (ref->pere != NULL)
+		tmp = elem;
+	return (tmp);
 }

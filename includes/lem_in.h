@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:48:31 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/25 16:00:08 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/26 15:38:46 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ void			ft_free_switch(t_last *lst);
 int				ft_starter(t_last *lst);
 char			*ft_search_fils(t_last *lst, char *name);
 int				check_link_ob(t_last *lst);
-
+t_list			*ft_move_bis2(t_last *lst, t_list *elem, t_list *tmp,
+				t_ref *ref);
 #endif
