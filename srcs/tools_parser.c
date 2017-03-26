@@ -6,11 +6,12 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/12 10:55:01 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/24 12:04:39 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/26 12:22:50 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
 
 int		ft_false_link_bis(t_ref *ref)
 {
@@ -33,16 +34,16 @@ int		ft_false_link(char *line)
 	while (line[ref.i])
 	{
 		ref.j = ref.i;
-		while (((line[ref.i] >= 48 && line[ref.i] <= 57)
-		|| (line[ref.i] >= 65 && line[ref.i] <= 90)
-		|| (line[ref.i] >= 97 && line[ref.i] <= 122)) && line[ref.i] != '\0')
-		{
+		while (((line[ref.i] >= 33 && line[ref.i] <= 44)
+		|| (line[ref.i] >= 46 && line[ref.i] <= 126)) && line[ref.i] != '\0')
 			ref.i++;
-		}
 		if (!ref.dup)
 			ref.dup = ft_strsub(line, ref.j, ref.i);
 		else
-			ref.dup2 = ft_strsub(line, ref.j, ref.i - 2);
+		{
+			ref.dup2 = ft_strsub(line, ref.j, ref.i - ref.j);
+			break ;
+		}
 		if (line[ref.i] == '-')
 			ref.auth++;
 		ref.res = ref.flag;
@@ -53,6 +54,7 @@ int		ft_false_link(char *line)
 		return (0);
 	return (1);
 }
+
 
 int		ft_after_link(t_last *lst)
 {
@@ -67,7 +69,8 @@ int		ft_after_link(t_last *lst)
 				return (0);
 			if (elem->prev != NULL)
 			{
-				if (ft_check_space(elem->prev->content))
+				if (ft_check_space(elem->prev->content)
+				&& elem->prev->content[0] != '#')
 					return (0);
 			}
 		}
@@ -100,7 +103,7 @@ int		ft_check_salle(t_last *lst)
 	elem = lst->fin;
 	while (elem != NULL)
 	{
-		if (ft_check_space(elem->content))
+		if (ft_check_space(elem->content) && elem->content[0] != '#')
 		{
 			ref.i = 0;
 			while (elem->content[ref.i] != ' ')

@@ -1,12 +1,9 @@
 1
 ##start
-42_Commandements 2150 3000
+3 456 456
+4 34 53
 ##end
-Filit 2775 3000
-ft_printf 3200 3000
-Get_Next_line 3000 3000
-42_Commandements-ft_printf
-ft_printf-Filit
-Filit-Get_Next_line
-Get_Next_line-42_Commandements
-Get_Next_line-ft_printf
+2 456 3
+3-4
+# hamza
+4-2
