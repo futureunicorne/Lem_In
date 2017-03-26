@@ -6,7 +6,7 @@
 #    By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/07 18:38:35 by hel-hadi          #+#    #+#              #
-#    Updated: 2017/03/25 12:57:58 by hel-hadi         ###   ########.fr        #
+#    Updated: 2017/03/26 16:19:28 by hel-hadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 LDFLAGS = -L./libft/
 LFT = -lft
-CC = gcc $(CFLAGS) -g
-CFLAGS = -Wall -Wextra -Werror -g
+CC = gcc $(CFLAGS)
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 

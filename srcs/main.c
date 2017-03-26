@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/04 19:47:41 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/26 15:29:43 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/26 16:16:47 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ int	main(void)
 	t_pas	pas;
 	t_last	lst;
 	t_last	dup;
+	t_list	*elem;
 
 	ft_init_lst(&lst);
 	ft_init_lst(&dup);
+	elem = NULL;
 	ft_memset(&pas, 0, sizeof(t_pas));
 	pas.fd = 0;
-	if (ft_recup_info(&pas, &lst) == 0)
+	if (ft_recup_info(&pas, &lst, elem) == 0)
 		return (0);
 	if (main_dup(&lst, &dup) == 0)
 		return (0);

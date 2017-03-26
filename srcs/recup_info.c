@@ -6,7 +6,7 @@
 /*   By: hel-hadi <hel-hadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 07:36:23 by hel-hadi          #+#    #+#             */
-/*   Updated: 2017/03/26 15:16:14 by hel-hadi         ###   ########.fr       */
+/*   Updated: 2017/03/26 16:17:51 by hel-hadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,14 @@ int		ft_recup_info_bis(t_pas *pas, t_last *lst)
 	if (pas->line[0] == '\0')
 		return (0);
 	if (ft_record_general(pas->line) == 0)
-	{
-		free(pas->line);
 		return (0);
-	}
 	else
 		ft_add_elm_bis(lst, (char*)pas->line, ft_strlen(pas->line));
-	free(pas->line);
 	return (1);
 }
 
-int		ft_recup_info(t_pas *pas, t_last *lst)
+int		ft_recup_info(t_pas *pas, t_last *lst, t_list *elem)
 {
-	t_list *elem;
-
 	get_next_line(pas->fd, &pas->line);
 	if (ft_check_nb_ant(pas->line) < 0 || ft_check_nb_ant(pas->line) == 0
 	|| ft_check_nb_ant(pas->line) > 2147483647)
@@ -122,6 +116,8 @@ int		ft_recup_info(t_pas *pas, t_last *lst)
 	{
 		if (ft_recup_info_bis(pas, lst) == 0)
 			break ;
+		free(pas->line);
 	}
+	free(pas->line);
 	return (1);
 }
